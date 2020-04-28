@@ -3,6 +3,8 @@ import PropTypes from "prop-types";
 import Sidebar from "./sidebar";
 import Home from "./home";
 import Portfolio from "./portfolio";
+import PortfolioMain from "./portfolioMain";
+import ProjectsMain from "./projectsMain";
 import "./App.css";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import {
@@ -42,8 +44,8 @@ class App extends React.Component {
           <div className="wrapper">
             <div className="horizontalLine" />
             <div className="header" align="center">
-              <span>Valentin Zhmodikov</span> <br />
-              <span className="slogan">Capturing characters not colors</span>
+              <span>VALENTIN ZHMODIKOV</span> <br />
+              <span className="slogan">capturing characters not colors</span>
             </div>
             <div className="sideMenu">
               <Sidebar pc={pc} />
@@ -52,6 +54,12 @@ class App extends React.Component {
               <Switch>
                 <Route path="/(Home|)">
                   <Home />
+                </Route>
+                <Route path="/PortfolioMain">
+                  <PortfolioMain />
+                </Route>
+                <Route path="/ProjectsMain">
+                  <ProjectsMain />
                 </Route>
                 <Route path="/Portraits">
                   <Portfolio section="1" />
@@ -65,18 +73,37 @@ class App extends React.Component {
                 <Route path="/Places">
                   <Portfolio section="4" />
                 </Route>
-                <Route path="/Projects">{t("Projects.text")}</Route>
-                <Route path="/Publications">{t("Publications.text")}</Route>
-                <Route path="/About">{t("About.text")}</Route>
+                <Route path="/Prj1">
+                  <Portfolio section="5" />
+                </Route>
+                <Route path="/Prj2">
+                  <Portfolio section="6" />
+                </Route>
+                <Route path="/Contacts">
+                  {t("Contacts.text")}
+                  <br />
+                  valentin@zhmodikov.com
+                  <br />
+                </Route>
+                <Route path="/About">
+                  <br />
+                  {t("About.text1")}
+                  <br />
+                  <br />
+                  {t("About.text2")}
+                  <br />
+                  <br />
+                  {t("About.text3")}
+                </Route>
               </Switch>
             </div>
             <div className="footer">
               <div className="footerContent">
                 <span>valentin@zhmodikov.com</span>
-                <br />
                 <span>ABN: 28 247 093 188</span>
               </div>
             </div>
+            <div className="footerLine"></div>
           </div>
         </Router>
       );

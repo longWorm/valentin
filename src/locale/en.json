@@ -3,12 +3,14 @@
     "Home": "HOME",
     "Portfolio": "PORTFOLIO",
     "Projects": "PROJECTS",
-    "Publications": "PUBLICATIONS",
+    "Contacts": "CONTACTS",
     "About": "ABOUT",
-    "Portraits": "Portraits",
-    "Commercial": "Commercial",
-    "Moments": "Moments",
-    "Places": "Places"
+    "Portraits": "PORTRAITS",
+    "Commercial": "COMMERCIAL",
+    "Moments": "MOMENTS",
+    "Places": "PLACES",
+    "Prj1": "THE BOOK OF INK",
+    "Prj2": "THE MILITANT MASKS"
   },
   "home": {
     "text": "Valentin's home page"
@@ -19,10 +21,12 @@
   "Projects": {
     "text": "Kelly's father, John Kelly (known as Red), was born in 1820 in Moyglass, near Cashel, County Tipperary, Ireland, to Thomas and Mary (née Cody).[citation needed] At the age of 21, he was found guilty of stealing two pigs[4] and was transported on the Prince Regent, arriving at Hobart Town, Van Diemen's Land on 2 January 1842. After he received his Certificate of Freedom on 11 January 1848, Red Kelly moved to Victoria and found work at James Quinn's farm at Wallan Wallan as a bush carpenter. He subsequently turned his attention to gold-digging, at which he was successful and which enabled him to purchase a small freehold for £615 in Beveridge, just north of Melbourne."
   },
-  "Publications": {
-    "text": "Kelly's father, John Kelly (known as Red), was born in 1820 in Moyglass, near Cashel, County Tipperary, Ireland, to Thomas and Mary (née Cody).[citation needed] At the age of 21, he was found guilty of stealing two pigs[4] and was transported on the Prince Regent, arriving at Hobart Town, Van Diemen's Land on 2 January 1842. After he received his Certificate of Freedom on 11 January 1848, Red Kelly moved to Victoria and found work at James Quinn's farm at Wallan Wallan as a bush carpenter. He subsequently turned his attention to gold-digging, at which he was successful and which enabled him to purchase a small freehold for £615 in Beveridge, just north of Melbourne."
+  "Contacts": {
+    "text": "Get in touch:"
   },
   "About": {
-    "text": "In 1869, aged fourteen, Kelly met Irish-born Harry Power (alias of Henry Johnson), a transported convict who turned to bushranging in North-Eastern Victoria after escaping Melbourne's Pentridge Prison. The Kellys formed part of his network of sympathisers, and by May 1869, Ned had become his bushranging protégé. At the end of the month, they attempted to steal horses from the Mansfield property of squatter John Rower as part of a plan to rob the Woods Point–Mansfield gold escort. They abandoned the idea and fled back into the bush after Rower shot at them, and Kelly temporarily broke off his association with Power.[17]"
+    "text1": "Valentin Zhmodikov is a Russian-Australian photographer with an interest in portraiture, landscape and music. Specialising in both art and commercial photography, in his work he aims to encapsulate not only the shape and beauty of the subject but its essence and nature.",
+    "text2": "Having a background in philosophy, he seizes undercover phenomena of people and events through a game of lines, subtle movements & facial expressions, shapes & shadows.",
+    "text3": "Capturing everyday people, professional models and celebrities from all around the world he extracts their personality in his own unique manner."
   }
 }

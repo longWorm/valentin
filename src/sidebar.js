@@ -24,9 +24,14 @@ class Sidebar extends React.Component {
     super(props);
     this.pc = props.pc;
     this.mobileMenuClickedCallback = props.mobileSideMenuClicked;
-    this.state = { menuVisible: false, portfolioSubListVisible: false };
+    this.state = {
+      menuVisible: false,
+      portfolioSubListVisible: false,
+      projectSublistVisible: false
+    };
     this.MenuClick = this.MenuClick.bind(this);
     this.PortfolioClick = this.PortfolioClick.bind(this);
+    this.ProjectsClick = this.ProjectsClick.bind(this);
   }
 
   MenuClick() {
@@ -40,86 +45,122 @@ class Sidebar extends React.Component {
     });
   }
 
+  ProjectsClick() {
+    this.setState({ projectSublistVisible: !this.state.projectSublistVisible });
+  }
+
   render() {
     if (this.pc) {
       return (
-        <div className="sidebar">
-          <List className="MaterialUiList" disablePadding>
-            <ListItem key="Home" button>
-              <Link to="Home" className="listItem">
-                {t("sidebar.Home")}
-              </Link>
-            </ListItem>
-            <ListItem key="Portfolio" button onClick={this.PortfolioClick}>
-              <span className="listItem">{t("sidebar.Portfolio")}</span>
-              {this.state.portfolioSubListVisible ? (
-                <ExpandLess />
-              ) : (
-                <ExpandMore />
-              )}
-            </ListItem>
-            <Collapse
-              in={this.state.portfolioSubListVisible}
-              timeout="auto"
-              unmountOnExit
-            >
-              <List className="MaterialUiListMobile" disablePadding dense>
-                <ListItem button className="subListItem">
-                  <Link className="subListItem" to="Portraits">
-                    {t("sidebar.Portraits")}
+        <div className="root">
+          <div className="firstPanel"></div>
+          <div className="sidebar">
+            <div className="sidebar2">
+              <List className="MaterialUiList" disablePadding>
+                <ListItem key="Home" button>
+                  <Link to="Home" className="listItem">
+                    {t("sidebar.Home")}
                   </Link>
                 </ListItem>
-                <ListItem button className="subListItem">
-                  <Link className="subListItem" to="Moments">
-                    {t("sidebar.Moments")}
+                <ListItem key="Portfolio" button onClick={this.PortfolioClick}>
+                  <Link to="PortfolioMain" className="listItem">
+                    {t("sidebar.Portfolio")}
                   </Link>
                 </ListItem>
-                <ListItem button className="subListItem">
-                  <Link className="subListItem" to="Commercial">
-                    {t("sidebar.Commercial")}
+                {/*
+                  <span className="listItem">{t("sidebar.Portfolio")}</span>
+                  {this.state.portfolioSubListVisible ? (
+                    <ExpandLess />
+                  ) : (
+                    <ExpandMore />
+                  )}
+                
+                 <Collapse
+                  in={this.state.portfolioSubListVisible}
+                  timeout="auto"
+                  unmountOnExit
+                >
+                  <List className="MaterialUiListSublist" disablePadding dense>
+                    <ListItem button className="subListItem">
+                      <Link className="subListItem" to="Portraits">
+                        {t("sidebar.Portraits")}
+                      </Link>
+                    </ListItem>
+                    <ListItem button className="subListItem">
+                      <Link className="subListItem" to="Moments">
+                        {t("sidebar.Moments")}
+                      </Link>
+                    </ListItem>
+                    <ListItem button className="subListItem">
+                      <Link className="subListItem" to="Commercial">
+                        {t("sidebar.Commercial")}
+                      </Link>
+                    </ListItem>
+                    <ListItem button className="subListItem">
+                      <Link className="subListItem" to="Places">
+                        {t("sidebar.Places")}
+                      </Link>
+                    </ListItem>
+                  </List>
+                </Collapse> */}
+                <ListItem key="Projects" button onClick={this.ProjectsClick}>
+                  <Link to="ProjectsMain" className="listItem">
+                    {t("sidebar.Projects")}
+                  </Link>
+                  {/* <span className="listItem">{t("sidebar.Projects")}</span>
+                  {this.state.projectSublistVisible ? (
+                    <ExpandLess />
+                  ) : (
+                    <ExpandMore />
+                  )} */}
+                </ListItem>
+                {/* <Collapse
+                  in={this.state.projectSublistVisible}
+                  timeout="auto"
+                  unmountOnExit
+                >
+                  <ListItem button className="MaterialUiListSublist">
+                    <Link className="subListItem" to="Prj1">
+                      {t("sidebar.Prj1")}
+                    </Link>
+                    <Link className="subListItem" to="Prj2">
+                      {t("sidebar.Prj2")}
+                    </Link>
+                  </ListItem>
+                </Collapse> */}
+                <ListItem key="About" button>
+                  <Link to="About" className="listItem">
+                    {t("sidebar.About")}
                   </Link>
                 </ListItem>
-                <ListItem button className="subListItem">
-                  <Link className="subListItem" to="Places">
-                    {t("sidebar.Places")}
+                <ListItem key="Contacts" button>
+                  <Link to="Contacts" className="listItem">
+                    {t("sidebar.Contacts")}
                   </Link>
                 </ListItem>
               </List>
-            </Collapse>
-            <ListItem key="Projects" button>
-              <Link to="Projects" className="listItem">
-                {t("sidebar.Projects")}
-              </Link>
-            </ListItem>
-            <ListItem key="Publications" button>
-              <Link to="Publications" className="listItem">
-                {t("sidebar.Publications")}
-              </Link>
-            </ListItem>
-            <ListItem key="About" button>
-              <Link to="About" className="listItem">
-                {t("sidebar.About")}
-              </Link>
-            </ListItem>
-          </List>
-          <span onClick={click}>{getLanguage()}</span>
-          <span>
-            <div className="contactIcons">
-              <a href="https://www.facebook.com/zhmodikov/">
-                <img alt="intagramButtom" src={facebookLogo} height="25px" />
-              </a>
             </div>
-            <div className="contactIcons">
-              <a href="https://www.instagram.com/zhmodikov/?hl=en">
-                <img alt="facebookButton" src={instagramLogo} height="25px" />
-              </a>
-            </div>
-            <div className="contactIcons">
-              <a href="mailto:valentin@zhmodikov.com">
-                <img alt="mailButton" src={mailLogo} height="25px" />
-              </a>
-            </div>
-          </span>
+          </div>
+          <div className="langPanel">
+            <span onClick={click}>{getLanguage()}</span>
+            <span>
+              <div className="contactIcons">
+                <a href="https://www.facebook.com/zhmodikov/">
+                  <img alt="intagramButtom" src={facebookLogo} height="25px" />
+                </a>
+              </div>
+              <div className="contactIcons">
+                <a href="https://www.instagram.com/zhmodikov/?hl=en">
+                  <img alt="facebookButton" src={instagramLogo} height="25px" />
+                </a>
+              </div>
+              <div className="contactIcons">
+                <a href="mailto:valentin@zhmodikov.com">
+                  <img alt="mailButton" src={mailLogo} height="25px" />
+                </a>
+              </div>
+            </span>
+          </div>
         </div>
       );
     } else {

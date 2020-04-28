@@ -10,3 +10,8 @@
   flex-wrap: "wrap";
   justify-content: "space-around";
 }
+
+.gridlist {
+  height: 100%;
+  width: 100%;
+}

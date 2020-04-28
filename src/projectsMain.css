@@ -1,0 +1,9 @@
+.listItem {
+  color: black;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.projectsMain {
+  height: 100%;
+}
