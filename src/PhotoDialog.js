@@ -1,24 +1,34 @@
+import "./PhotoDialog.css";
 import React from "react";
 import Dialog from "@material-ui/core/Dialog";
-import "./PhotoDialog.css";
+import Box from "@material-ui/core/Box";
+import Button from "@material-ui/core/Button";
+import Image from "react-image";
 
 function PhotoDialog(props) {
-  const { onClose, open, selectedImage } = props;
+  const { onClose, open, selectedImage, nextPhoto, previousPhoto } = props;
 
   const handleClose = () => {
-    console.log("close");
     onClose();
   };
-
+  const height = document.body.clientHeight * 0.9;
   return (
     <Dialog
+      className="dialog"
       onClose={handleClose}
-      aria-labelledby="simple-dialog-title"
       open={open}
+      maxWidth="none"
     >
-      <div>
-        <img className="img" src={selectedImage} alt={selectedImage}></img>
-      </div>
+      <Box
+        display="flex"
+        flexWrap="nowrap"
+        justifyContent="center"
+        flexDirection="row"
+      >
+        <Button onClick={previousPhoto}>&#8592;</Button>
+        <Image src={selectedImage} alt={selectedImage} height={height} />
+        <Button onClick={nextPhoto}>&#8594;</Button>
+      </Box>
     </Dialog>
   );
 }

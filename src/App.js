@@ -5,6 +5,7 @@ import Home from "./home";
 import Portfolio from "./portfolio";
 import PortfolioMain from "./portfolioMain";
 import ProjectsMain from "./projectsMain";
+import About from "./About";
 import "./App.css";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import {
@@ -14,14 +15,14 @@ import {
   translate,
   t
 } from "react-switch-lang";
-import en from "./locale/en.json";
-import ru from "./locale/ru.json";
+import EN from "./locale/en.json";
+import RU from "./locale/ru.json";
 import facebookLogo from "./public/facebook.png";
 import instagramLogo from "./public/instagram.png";
 
-setTranslations({ en, ru });
+setTranslations({ EN, RU });
 setLanguageCookie();
-setDefaultLanguage("en");
+setDefaultLanguage("EN");
 
 class App extends React.Component {
   constructor(props) {
@@ -86,14 +87,7 @@ class App extends React.Component {
                   <br />
                 </Route>
                 <Route path="/About">
-                  <br />
-                  {t("About.text1")}
-                  <br />
-                  <br />
-                  {t("About.text2")}
-                  <br />
-                  <br />
-                  {t("About.text3")}
+                  <About />
                 </Route>
               </Switch>
             </div>

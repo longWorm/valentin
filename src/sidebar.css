@@ -24,10 +24,7 @@
 .langPanel {
   width: 10%;
   height: 100%;
-  text-align: center;
-  justify-content: center;
-  align-items: center;
-  justify-items: center;
+  justify-items: right;
   display: inline-block;
 }
 
@@ -73,6 +70,5 @@
 
 .contactIcons {
   padding-left: 15px;
-  padding-bottom: 30px;
   display: inline;
 }

@@ -21,7 +21,7 @@ body {
 .wrapper {
   display: grid;
   min-height: -webkit-fill-available;
-  grid-template-rows: 2% 8% auto 70% auto 2%;
+  grid-template-rows: 2% auto auto 70% auto 2%;
   vertical-align: bottom;
   background-color: #fff;
   color: #444;
@@ -54,8 +54,7 @@ body {
 }
 
 .header {
-  padding-top: 20px;
-  padding-bottom: 20px;
+  padding-top: 5px;
   grid-row: 2;
   font-weight: bold;
 }

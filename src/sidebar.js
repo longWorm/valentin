@@ -12,10 +12,10 @@ import mailLogo from "./public/mail.png";
 
 function click() {
   let lang = getLanguage();
-  if (lang === "en") {
-    setLanguage("ru");
+  if (lang === "EN") {
+    setLanguage("RU");
   } else {
-    setLanguage("en");
+    setLanguage("EN");
   }
 }
 
@@ -146,17 +146,32 @@ class Sidebar extends React.Component {
             <span>
               <div className="contactIcons">
                 <a href="https://www.facebook.com/zhmodikov/">
-                  <img alt="intagramButtom" src={facebookLogo} height="25px" />
+                  <img
+                    alt="intagramButtom"
+                    src={instagramLogo}
+                    height="25px"
+                    style={{ verticalAlign: "middle" }}
+                  />
                 </a>
               </div>
               <div className="contactIcons">
                 <a href="https://www.instagram.com/zhmodikov/?hl=en">
-                  <img alt="facebookButton" src={instagramLogo} height="25px" />
+                  <img
+                    alt="facebookButton"
+                    src={facebookLogo}
+                    height="25px"
+                    style={{ verticalAlign: "middle" }}
+                  />
                 </a>
               </div>
               <div className="contactIcons">
                 <a href="mailto:valentin@zhmodikov.com">
-                  <img alt="mailButton" src={mailLogo} height="25px" />
+                  <img
+                    alt="mailButton"
+                    src={mailLogo}
+                    height="25px"
+                    style={{ verticalAlign: "middle" }}
+                  />
                 </a>
               </div>
             </span>

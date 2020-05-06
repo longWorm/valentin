@@ -1,16 +1,3 @@
-.portfolio {
-  color: black;
-  display: "flex";
-  flex-wrap: "wrap";
-  justify-content: "space-around";
-}
-
-.grid {
-  display: "flex";
-  flex-wrap: "wrap";
-  justify-content: "space-around";
-}
-
 .gridlist {
   height: 100%;
   width: 100%;

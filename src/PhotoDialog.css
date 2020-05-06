@@ -1,4 +1,8 @@
-.img {
-  max-width: 100%;
-  max-height: 100%;
+.dialog {
+  color: purple;
+  text-align: center;
+  height: 100vh;
+}
+
+.image {
 }
