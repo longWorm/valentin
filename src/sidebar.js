@@ -67,67 +67,11 @@ class Sidebar extends React.Component {
                     {t("sidebar.Portfolio")}
                   </Link>
                 </ListItem>
-                {/*
-                  <span className="listItem">{t("sidebar.Portfolio")}</span>
-                  {this.state.portfolioSubListVisible ? (
-                    <ExpandLess />
-                  ) : (
-                    <ExpandMore />
-                  )}
-                
-                 <Collapse
-                  in={this.state.portfolioSubListVisible}
-                  timeout="auto"
-                  unmountOnExit
-                >
-                  <List className="MaterialUiListSublist" disablePadding dense>
-                    <ListItem button className="subListItem">
-                      <Link className="subListItem" to="Portraits">
-                        {t("sidebar.Portraits")}
-                      </Link>
-                    </ListItem>
-                    <ListItem button className="subListItem">
-                      <Link className="subListItem" to="Moments">
-                        {t("sidebar.Moments")}
-                      </Link>
-                    </ListItem>
-                    <ListItem button className="subListItem">
-                      <Link className="subListItem" to="Commercial">
-                        {t("sidebar.Commercial")}
-                      </Link>
-                    </ListItem>
-                    <ListItem button className="subListItem">
-                      <Link className="subListItem" to="Places">
-                        {t("sidebar.Places")}
-                      </Link>
-                    </ListItem>
-                  </List>
-                </Collapse> */}
                 <ListItem key="Projects" button onClick={this.ProjectsClick}>
                   <Link to="ProjectsMain" className="listItem">
                     {t("sidebar.Projects")}
                   </Link>
-                  {/* <span className="listItem">{t("sidebar.Projects")}</span>
-                  {this.state.projectSublistVisible ? (
-                    <ExpandLess />
-                  ) : (
-                    <ExpandMore />
-                  )} */}
                 </ListItem>
-                {/* <Collapse
-                  in={this.state.projectSublistVisible}
-                  timeout="auto"
-                  unmountOnExit
-                >
-                  <ListItem button className="MaterialUiListSublist">
-                    <Link className="subListItem" to="Prj1">
-                      {t("sidebar.Prj1")}
-                    </Link>
-                    <Link className="subListItem" to="Prj2">
-                      {t("sidebar.Prj2")}
-                    </Link>
-                  </ListItem>
-                </Collapse> */}
                 <ListItem key="About" button>
                   <Link to="About" className="listItem">
                     {t("sidebar.About")}
@@ -180,101 +124,95 @@ class Sidebar extends React.Component {
       );
     } else {
       return (
-        <div className="sidebarMobile___">
-          <div className="sidebarMobile">
-            <div align="left" style={{ padding: "10px 10px 10px 10px" }}>
-              <img
-                alt="hamburgerMenu"
-                src={hamburgerLogo}
-                height="25px"
-                onClick={this.MenuClick}
-              />
-            </div>
-            <div
-              style={{ display: this.state.menuVisible ? "inherit" : "none" }}
-            >
-              <List className="MaterialUiListMobile" disablePadding dense>
-                <ListItem key="Home" button>
-                  <Link to="Home" className="listItem">
-                    {t("sidebar.Home")}
-                  </Link>
-                </ListItem>
-                <ListItem key="Portfolio" button onClick={this.PortfolioClick}>
-                  <span className="listItem">{t("sidebar.Portfolio")}</span>
-                  {this.state.portfolioSubListVisible ? (
-                    <ExpandLess />
-                  ) : (
-                    <ExpandMore />
-                  )}
-                </ListItem>
-                <Collapse
-                  in={this.state.portfolioSubListVisible}
-                  timeout="auto"
-                  unmountOnExit
-                >
-                  <List className="MaterialUiListMobile" disablePadding dense>
-                    <ListItem button className="subListItem">
-                      <Link className="subListItem" to="Portraits">
-                        {t("sidebar.Portraits")}
-                      </Link>
-                    </ListItem>
-                    <ListItem button className="subListItem">
-                      <Link className="subListItem" to="Commercial">
-                        {t("sidebar.Commercial")}
-                      </Link>
-                    </ListItem>
-                    <ListItem button className="subListItem">
-                      <Link className="subListItem" to="Moments">
-                        {t("sidebar.Moments")}
-                      </Link>
-                    </ListItem>
-                    <ListItem button className="subListItem">
-                      <Link className="subListItem" to="Places">
-                        {t("sidebar.Places")}
-                      </Link>
-                    </ListItem>
-                  </List>
-                </Collapse>
-                <ListItem key="Projects" button>
-                  <Link to="Projects" className="listItem">
-                    {t("sidebar.Projects")}
-                  </Link>
-                </ListItem>
-                <ListItem key="Publications" button>
-                  <Link to="Publications" className="listItem">
-                    {t("sidebar.Publications")}
-                  </Link>
-                </ListItem>
-                <ListItem key="About" button>
-                  <Link to="About" className="listItem">
-                    {t("sidebar.About")}
-                  </Link>
-                </ListItem>
-              </List>
-            </div>
-            <div
-              style={{ display: this.state.menuVisible ? "inherit" : "none" }}
-            >
-              <span
-                style={{
-                  color: getLanguage() === "en" ? "white" : "black",
-                  alignItems: "center",
-                  display: "flex"
-                }}
+        <div className="sidebarMobile">
+          <div align="left" style={{ padding: "10px 10px 10px 10px" }}>
+            <img
+              alt="hamburgerMenu"
+              src={hamburgerLogo}
+              height="25px"
+              onClick={this.MenuClick}
+            />
+          </div>
+          <div style={{ display: this.state.menuVisible ? "inherit" : "none" }}>
+            <List className="MaterialUiListMobile" disablePadding dense>
+              <ListItem key="Home" button>
+                <Link to="Home" className="listItem">
+                  {t("sidebar.Home")}
+                </Link>
+              </ListItem>
+              <ListItem key="Portfolio" button onClick={this.PortfolioClick}>
+                <span className="listItem">{t("sidebar.Portfolio")}</span>
+                {this.state.portfolioSubListVisible ? (
+                  <ExpandLess />
+                ) : (
+                  <ExpandMore />
+                )}
+              </ListItem>
+              <Collapse
+                in={this.state.portfolioSubListVisible}
+                timeout="auto"
+                unmountOnExit
               >
-                En
-              </span>
-              <SwitchUIControl color="default" onClick={click} />
-              <span
-                style={{
-                  color: getLanguage() === "ru" ? "white" : "black",
-                  alignItems: "center",
-                  display: "flex"
-                }}
-              >
-                Ru
-              </span>
-            </div>
+                <List className="MaterialUiListMobile" disablePadding dense>
+                  <ListItem button className="subListItem">
+                    <Link className="subListItem" to="Portraits">
+                      {t("sidebar.Portraits")}
+                    </Link>
+                  </ListItem>
+                  <ListItem button className="subListItem">
+                    <Link className="subListItem" to="Commercial">
+                      {t("sidebar.Commercial")}
+                    </Link>
+                  </ListItem>
+                  <ListItem button className="subListItem">
+                    <Link className="subListItem" to="Moments">
+                      {t("sidebar.Moments")}
+                    </Link>
+                  </ListItem>
+                  <ListItem button className="subListItem">
+                    <Link className="subListItem" to="Places">
+                      {t("sidebar.Places")}
+                    </Link>
+                  </ListItem>
+                </List>
+              </Collapse>
+              <ListItem key="Projects" button>
+                <Link to="Projects" className="listItem">
+                  {t("sidebar.Projects")}
+                </Link>
+              </ListItem>
+              <ListItem key="About" button>
+                <Link to="About" className="listItem">
+                  {t("sidebar.About")}
+                </Link>
+              </ListItem>
+              <ListItem key="Contacts" button>
+                <Link to="Contacts" className="listItem">
+                  {t("sidebar.Contacts")}
+                </Link>
+              </ListItem>
+            </List>
+          </div>
+          <div style={{ display: this.state.menuVisible ? "inherit" : "none" }}>
+            <span
+              style={{
+                color: getLanguage() === "en" ? "white" : "black",
+                alignItems: "center",
+                display: "flex"
+              }}
+            >
+              En
+            </span>
+            <SwitchUIControl color="default" onClick={click} />
+            <span
+              style={{
+                color: getLanguage() === "ru" ? "white" : "black",
+                alignItems: "center",
+                display: "flex"
+              }}
+            >
+              Ru
+            </span>
           </div>
         </div>
       );

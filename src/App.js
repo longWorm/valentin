@@ -6,6 +6,7 @@ import Portfolio from "./portfolio";
 import PortfolioMain from "./portfolioMain";
 import ProjectsMain from "./projectsMain";
 import About from "./About";
+
 import "./App.css";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import {
@@ -54,7 +55,7 @@ class App extends React.Component {
             <div className="content">
               <Switch>
                 <Route path="/(Home|)">
-                  <Home />
+                  <Home pc={pc} />
                 </Route>
                 <Route path="/PortfolioMain">
                   <PortfolioMain />
@@ -87,7 +88,14 @@ class App extends React.Component {
                   <br />
                 </Route>
                 <Route path="/About">
-                  <About />
+                  <br />
+                  {t("About.text1")}
+                  <br />
+                  <br />
+                  {t("About.text2")}
+                  <br />
+                  <br />
+                  {t("About.text3")}
                 </Route>
               </Switch>
             </div>
@@ -105,13 +113,20 @@ class App extends React.Component {
       var wrapperClass = this.state.MobileSideMenuExpanded
         ? "wrapperMobileExpanded"
         : "wrapperMobile";
+
+      var sideMenuClass = this.state.MobileSideMenuExpanded
+        ? "sideMenuMobileExpanded"
+        : "sideMenuMobile";
       return (
         <Router>
           <div className={wrapperClass}>
+            {/* <div className="horizontalLine" /> */}
             <div className="headerMobile" align="center">
-              <span>Zhmodikov</span>
+              <span>VALENTIN ZHMODIKOV</span> <br />
+              {/* <span className="slogan">capturing characters not colors</span> */}
             </div>
-            <div className="sideMenuMobile">
+            <div className="horizontalLine2" />
+            <div className={sideMenuClass}>
               <Sidebar
                 pc={pc}
                 mobileSideMenuClicked={this.MobileSideMenuClicked}
@@ -120,7 +135,7 @@ class App extends React.Component {
             <div className="contentMobile">
               <Switch>
                 <Route path="/(Home|)">
-                  <Home />
+                  <Home pc={pc} />
                 </Route>
                 <Route path="/Portraits">
                   Portraits

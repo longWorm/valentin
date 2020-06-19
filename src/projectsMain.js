@@ -11,6 +11,9 @@ class PortfolioMain extends React.Component {
     this.section5 = this.importAll(
       require.context("./public/Photos/5", false, /\.(png|jpe?g|svg)$/)
     );
+    this.section6 = this.importAll(
+      require.context("./public/Photos/6", false, /\.(png|jpe?g|svg)$/)
+    );
   }
 
   importAll(r) {
@@ -20,6 +23,8 @@ class PortfolioMain extends React.Component {
   render() {
     var index1 = Math.floor(Math.random() * this.section5.length);
     var index2 = index1 < this.section5.length - 1 ? index1 + 1 : index1 - 1;
+    var index3 = Math.floor(Math.random() * this.section6.length);
+    var index4 = index3 < this.section6.length - 1 ? index3 + 1 : index3 - 1;
 
     return (
       <div>
@@ -29,7 +34,7 @@ class PortfolioMain extends React.Component {
           justifyContent="center"
           flexDirection="row"
         >
-          <Box key="1" justifyContent="center" p={1} width="25%">
+          <Box key="1" justifyContent="center" p={1}>
             <Typography align="left" variant="h4">
               <Link className="listItem" to="Prj1">
                 {t("sidebar.Prj1")}
