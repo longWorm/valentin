@@ -20,6 +20,10 @@ class Home extends React.Component {
     );
   }
 
+  shouldComponentUpdate(nextProps, nextState) {
+    return false;
+  }
+
   importAll(r) {
     return r.keys().map(r);
   }

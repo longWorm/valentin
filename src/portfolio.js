@@ -97,12 +97,12 @@ class Portfolio extends React.Component {
             </Box>
           ))}
         </Box>
+
         <PhotoDialog
           open={this.state.open}
           selectedImage={this.state.selectedImage}
           onClose={this.OnPhotoClose}
           section={this.props.section}
-          onClose={this.OnPhotoClose}
           nextPhoto={this.OnNextPhoto}
           previousPhoto={this.OnPreviousPhoto}
         />

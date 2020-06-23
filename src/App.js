@@ -117,13 +117,16 @@ class App extends React.Component {
       var sideMenuClass = this.state.MobileSideMenuExpanded
         ? "sideMenuMobileExpanded"
         : "sideMenuMobile";
+
+      var contentClass = this.state.MobileSideMenuExpanded
+        ? "contentMobileExpanded"
+        : "contentMobile";
+
       return (
         <Router>
           <div className={wrapperClass}>
-            {/* <div className="horizontalLine" /> */}
             <div className="headerMobile" align="center">
               <span>VALENTIN ZHMODIKOV</span> <br />
-              {/* <span className="slogan">capturing characters not colors</span> */}
             </div>
             <div className="horizontalLine2" />
             <div className={sideMenuClass}>
@@ -132,30 +135,51 @@ class App extends React.Component {
                 mobileSideMenuClicked={this.MobileSideMenuClicked}
               />
             </div>
-            <div className="contentMobile">
+            <div className={contentClass}>
               <Switch>
                 <Route path="/(Home|)">
                   <Home pc={pc} />
                 </Route>
+                <Route path="/PortfolioMain">
+                  <PortfolioMain />
+                </Route>
+                <Route path="/ProjectsMain">
+                  <ProjectsMain />
+                </Route>
                 <Route path="/Portraits">
-                  Portraits
                   <Portfolio section="1" />
                 </Route>
                 <Route path="/Moments">
-                  Moments
                   <Portfolio section="2" />
                 </Route>
                 <Route path="/Commercial">
-                  Commercial
                   <Portfolio section="3" />
                 </Route>
                 <Route path="/Places">
-                  Places
                   <Portfolio section="4" />
                 </Route>
-                <Route path="/Projects">{t("Projects.text")}</Route>
-                <Route path="/Publications">{t("Publications.text")}</Route>
-                <Route path="/About">{t("About.text")}</Route>
+                <Route path="/Prj1">
+                  <Portfolio section="5" />
+                </Route>
+                <Route path="/Prj2">
+                  <Portfolio section="6" />
+                </Route>
+                <Route path="/Contacts">
+                  {t("Contacts.text")}
+                  <br />
+                  valentin@zhmodikov.com
+                  <br />
+                </Route>
+                <Route path="/About">
+                  <br />
+                  {t("About.text1")}
+                  <br />
+                  <br />
+                  {t("About.text2")}
+                  <br />
+                  <br />
+                  {t("About.text3")}
+                </Route>
               </Switch>
             </div>
             <div className="footerMobile">

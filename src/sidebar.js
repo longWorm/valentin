@@ -34,7 +34,7 @@ class Sidebar extends React.Component {
     this.ProjectsClick = this.ProjectsClick.bind(this);
   }
 
-  MenuClick() {
+  MenuClick(e) {
     this.setState({ menuVisible: !this.state.menuVisible });
     if (this.mobileMenuClickedCallback) this.mobileMenuClickedCallback();
   }
@@ -141,43 +141,12 @@ class Sidebar extends React.Component {
                 </Link>
               </ListItem>
               <ListItem key="Portfolio" button onClick={this.PortfolioClick}>
-                <span className="listItem">{t("sidebar.Portfolio")}</span>
-                {this.state.portfolioSubListVisible ? (
-                  <ExpandLess />
-                ) : (
-                  <ExpandMore />
-                )}
+                <Link to="PortfolioMain" className="listItem">
+                  {t("sidebar.Portfolio")}
+                </Link>
               </ListItem>
-              <Collapse
-                in={this.state.portfolioSubListVisible}
-                timeout="auto"
-                unmountOnExit
-              >
-                <List className="MaterialUiListMobile" disablePadding dense>
-                  <ListItem button className="subListItem">
-                    <Link className="subListItem" to="Portraits">
-                      {t("sidebar.Portraits")}
-                    </Link>
-                  </ListItem>
-                  <ListItem button className="subListItem">
-                    <Link className="subListItem" to="Commercial">
-                      {t("sidebar.Commercial")}
-                    </Link>
-                  </ListItem>
-                  <ListItem button className="subListItem">
-                    <Link className="subListItem" to="Moments">
-                      {t("sidebar.Moments")}
-                    </Link>
-                  </ListItem>
-                  <ListItem button className="subListItem">
-                    <Link className="subListItem" to="Places">
-                      {t("sidebar.Places")}
-                    </Link>
-                  </ListItem>
-                </List>
-              </Collapse>
-              <ListItem key="Projects" button>
-                <Link to="Projects" className="listItem">
+              <ListItem key="Projects" button onClick={this.ProjectsClick}>
+                <Link to="ProjectsMain" className="listItem">
                   {t("sidebar.Projects")}
                 </Link>
               </ListItem>
