@@ -110,7 +110,7 @@ body {
 
 .contentMobile {
   border-radius: 5px;
-  padding: 20px;
+  padding: 10px 5px 0px 5px;
   grid-row: 4;
   grid-column: 1;
   z-index: 0;
@@ -118,7 +118,7 @@ body {
 
 .contentMobileExpanded {
   border-radius: 5px;
-  padding: 20px;
+  padding: 10px 5px 0px 5px;
   grid-row: 4;
   grid-column-start: 1;
   grid-column-end: 3;

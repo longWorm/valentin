@@ -7,7 +7,7 @@ import PhotoDialog from "./PhotoDialog";
 class Portfolio extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { open: false, section: props.section };
+    this.state = { open: false, section: props.section, pc: props.pc };
 
     this.OnPhotoClicked = this.OnPhotoClicked.bind(this);
     this.OnPhotoClose = this.OnPhotoClose.bind(this);
@@ -82,32 +82,60 @@ class Portfolio extends React.Component {
 
   render() {
     var photos = this.getPhotos();
+    if (this.state.pc) {
+      return (
+        <GridList className="gridlist" cols={1}>
+          <Box display="flex" flexWrap="wrap" justifyContent="center">
+            {photos.map((image, index) => (
+              <Box key={image} justifyContent="center" p={1}>
+                <img
+                  src={image}
+                  alt="PortraitsLogo"
+                  height="300px"
+                  onClick={() => this.OnPhotoClicked(image)}
+                />
+              </Box>
+            ))}
+          </Box>
 
-    return (
-      <GridList className="gridlist" cols={1}>
-        <Box display="flex" flexWrap="wrap" justifyContent="center">
-          {photos.map((image, index) => (
-            <Box key={image} justifyContent="center" p={1}>
-              <img
-                src={image}
-                alt="PortraitsLogo"
-                height="300px"
-                onClick={() => this.OnPhotoClicked(image)}
-              />
-            </Box>
-          ))}
-        </Box>
+          <PhotoDialog
+            open={this.state.open}
+            selectedImage={this.state.selectedImage}
+            onClose={this.OnPhotoClose}
+            section={this.props.section}
+            nextPhoto={this.OnNextPhoto}
+            previousPhoto={this.OnPreviousPhoto}
+          />
+        </GridList>
+      );
+    } else {
+      const width = document.body.clientWidth * 0.8;
+      return (
+        <GridList className="gridlist" cols={1}>
+          <Box display="flex" flexWrap="wrap" justifyContent="center">
+            {photos.map((image, index) => (
+              <Box key={image} justifyContent="center" p={1}>
+                <img
+                  src={image}
+                  alt="PortraitsLogo"
+                  onClick={() => this.OnPhotoClicked(image)}
+                  width={width}
+                />
+              </Box>
+            ))}
+          </Box>
 
-        <PhotoDialog
-          open={this.state.open}
-          selectedImage={this.state.selectedImage}
-          onClose={this.OnPhotoClose}
-          section={this.props.section}
-          nextPhoto={this.OnNextPhoto}
-          previousPhoto={this.OnPreviousPhoto}
-        />
-      </GridList>
-    );
+          <PhotoDialog
+            open={this.state.open}
+            selectedImage={this.state.selectedImage}
+            onClose={this.OnPhotoClose}
+            section={this.props.section}
+            nextPhoto={this.OnNextPhoto}
+            previousPhoto={this.OnPreviousPhoto}
+          />
+        </GridList>
+      );
+    }
   }
 }
 

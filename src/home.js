@@ -88,24 +88,13 @@ class Home extends React.Component {
     } else {
       return (
         <div className="homePhoto">
-          <Box
-            display="flex"
-            flexWrap="nowrap"
-            justifyContent="center"
-            flexDirection="row"
-          >
-            <Box key="1" justifyContent="center" p={1}>
-              <img
-                className="img"
-                src={
-                  this.section1[
-                    Math.floor(Math.random() * this.section1.length)
-                  ]
-                }
-                alt="Logo1"
-              />
-            </Box>
-          </Box>
+          <img
+            className="img"
+            src={
+              this.section1[Math.floor(Math.random() * this.section1.length)]
+            }
+            alt="Logo1"
+          />
         </div>
       );
     }

@@ -1,6 +1,5 @@
 import React from "react";
-import { List, ListItem, Collapse } from "@material-ui/core";
-import { ExpandLess, ExpandMore } from "@material-ui/icons";
+import { List, ListItem } from "@material-ui/core";
 import { t, getLanguage, setLanguage } from "react-switch-lang";
 import { Link } from "react-router-dom";
 import { Switch as SwitchUIControl } from "@material-ui/core";

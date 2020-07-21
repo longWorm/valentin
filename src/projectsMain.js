@@ -5,7 +5,6 @@ import Typography from "@material-ui/core/Typography";
 import { Link } from "react-router-dom";
 import { t } from "react-switch-lang";
 import Button from "@material-ui/core/Button";
-import { Img } from "react-image";
 
 class PortfolioMain extends React.Component {
   constructor(props) {
@@ -30,10 +29,6 @@ class PortfolioMain extends React.Component {
   render() {
     var index1 = Math.floor(Math.random() * this.section5.length);
     var index2 = index1 < this.section5.length - 1 ? index1 + 1 : index1 - 1;
-    var index3 = Math.floor(Math.random() * this.section6.length);
-    var index4 = index3 < this.section6.length - 1 ? index3 + 1 : index3 - 1;
-
-    const width = document.body.clientWidth * 0.8;
 
     if (this.pc) {
       return (
@@ -107,7 +102,7 @@ class PortfolioMain extends React.Component {
             </Typography>
           </Button>
           <div className="photo">
-            <Img className="img" src={this.section5[index1]} alt="Logo1" />
+            <img className="img" src={this.section5[index1]} alt="Logo1" />
           </div>
         </div>
       );

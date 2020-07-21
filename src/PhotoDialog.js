@@ -3,7 +3,6 @@ import React from "react";
 import Dialog from "@material-ui/core/Dialog";
 import Box from "@material-ui/core/Box";
 import Button from "@material-ui/core/Button";
-import { Img } from "react-image";
 
 function PhotoDialog(props) {
   const { onClose, open, selectedImage, nextPhoto, previousPhoto } = props;
@@ -26,7 +25,7 @@ function PhotoDialog(props) {
         flexDirection="row"
       >
         <Button onClick={previousPhoto}>&lt;</Button>
-        <Img src={selectedImage} alt={selectedImage} height={height} />
+        <img src={selectedImage} alt={selectedImage} height={height} />
         <Button onClick={nextPhoto}>&gt;</Button>
       </Box>
     </Dialog>

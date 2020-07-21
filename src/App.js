@@ -5,7 +5,6 @@ import Home from "./home";
 import Portfolio from "./portfolio";
 import PortfolioMain from "./portfolioMain";
 import ProjectsMain from "./projectsMain";
-import About from "./About";
 
 import "./App.css";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
@@ -58,28 +57,28 @@ class App extends React.Component {
                   <Home pc={pc} />
                 </Route>
                 <Route path="/PortfolioMain">
-                  <PortfolioMain />
+                  <PortfolioMain pc={pc} />
                 </Route>
                 <Route path="/ProjectsMain">
-                  <ProjectsMain />
+                  <ProjectsMain pc={pc} />
                 </Route>
                 <Route path="/Portraits">
-                  <Portfolio section="1" />
+                  <Portfolio section="1" pc={pc} />
                 </Route>
                 <Route path="/Moments">
-                  <Portfolio section="2" />
+                  <Portfolio section="2" pc={pc} />
                 </Route>
                 <Route path="/Commercial">
-                  <Portfolio section="3" />
+                  <Portfolio section="3" pc={pc} />
                 </Route>
                 <Route path="/Places">
-                  <Portfolio section="4" />
+                  <Portfolio section="4" pc={pc} />
                 </Route>
                 <Route path="/Prj1">
-                  <Portfolio section="5" />
+                  <Portfolio section="5" pc={pc} />
                 </Route>
                 <Route path="/Prj2">
-                  <Portfolio section="6" />
+                  <Portfolio section="6" pc={pc} />
                 </Route>
                 <Route path="/Contacts">
                   {t("Contacts.text")}
@@ -141,28 +140,28 @@ class App extends React.Component {
                   <Home pc={pc} />
                 </Route>
                 <Route path="/PortfolioMain">
-                  <PortfolioMain />
+                  <PortfolioMain pc={pc} />
                 </Route>
                 <Route path="/ProjectsMain">
-                  <ProjectsMain />
+                  <ProjectsMain pc={pc} />
                 </Route>
                 <Route path="/Portraits">
-                  <Portfolio section="1" />
+                  <Portfolio section="1" pc={pc} />
                 </Route>
                 <Route path="/Moments">
-                  <Portfolio section="2" />
+                  <Portfolio section="2" pc={pc} />
                 </Route>
                 <Route path="/Commercial">
-                  <Portfolio section="3" />
+                  <Portfolio section="3" pc={pc} />
                 </Route>
                 <Route path="/Places">
-                  <Portfolio section="4" />
+                  <Portfolio section="4" pc={pc} />
                 </Route>
                 <Route path="/Prj1">
-                  <Portfolio section="5" />
+                  <Portfolio section="5" pc={pc} />
                 </Route>
                 <Route path="/Prj2">
-                  <Portfolio section="6" />
+                  <Portfolio section="6" pc={pc} />
                 </Route>
                 <Route path="/Contacts">
                   {t("Contacts.text")}
