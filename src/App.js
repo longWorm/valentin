@@ -5,6 +5,7 @@ import Home from "./home";
 import Portfolio from "./portfolio";
 import PortfolioMain from "./portfolioMain";
 import ProjectsMain from "./projectsMain";
+import About from "./About";
 
 import "./App.css";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
@@ -87,14 +88,15 @@ class App extends React.Component {
                   <br />
                 </Route>
                 <Route path="/About">
-                  <br />
+                  <About />
+                  {/* <br />
                   {t("About.text1")}
                   <br />
                   <br />
                   {t("About.text2")}
                   <br />
                   <br />
-                  {t("About.text3")}
+                  {t("About.text3")} */}
                 </Route>
               </Switch>
             </div>
@@ -187,14 +189,14 @@ class App extends React.Component {
                 <span>
                   <a href="https://www.facebook.com/zhmodikov/">
                     <img
-                      alt="intagramButtom"
+                      alt="facebookButton"
                       src={facebookLogo}
                       height="25px"
                     />
                   </a>
                   <a href="https://www.instagram.com/zhmodikov/?hl=en">
                     <img
-                      alt="facebookButton"
+                      alt="intagramButtom"
                       src={instagramLogo}
                       height="25px"
                     />

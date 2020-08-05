@@ -89,7 +89,7 @@ body {
   float: right;
   grid-column: 2;
   z-index: 99;
-  opacity: 75%;
+  opacity: 0.75;
 }
 
 .sideMenuMobileExpanded {
@@ -98,7 +98,7 @@ body {
   grid-column: 2;
   float: right;
   z-index: 99;
-  opacity: 75%;
+  opacity: 0.75;
 }
 
 .content {

@@ -28,12 +28,19 @@ class Sidebar extends React.Component {
       portfolioSubListVisible: false,
       projectSublistVisible: false
     };
+
+    this.HamburgerClick = this.HamburgerClick.bind(this);
     this.MenuClick = this.MenuClick.bind(this);
     this.PortfolioClick = this.PortfolioClick.bind(this);
     this.ProjectsClick = this.ProjectsClick.bind(this);
   }
 
-  MenuClick(e) {
+  MenuClick() {
+    this.setState({ menuVisible: false });
+    if (this.mobileMenuClickedCallback) this.mobileMenuClickedCallback();
+  }
+
+  HamburgerClick(e) {
     this.setState({ menuVisible: !this.state.menuVisible });
     if (this.mobileMenuClickedCallback) this.mobileMenuClickedCallback();
   }
@@ -88,7 +95,7 @@ class Sidebar extends React.Component {
             <span onClick={click}>{getLanguage()}</span>
             <span>
               <div className="contactIcons">
-                <a href="https://www.facebook.com/zhmodikov/">
+                <a href="https://www.instagram.com/zhmodikov/?hl=en">
                   <img
                     alt="intagramButtom"
                     src={instagramLogo}
@@ -98,7 +105,7 @@ class Sidebar extends React.Component {
                 </a>
               </div>
               <div className="contactIcons">
-                <a href="https://www.instagram.com/zhmodikov/?hl=en">
+                <a href="https://www.facebook.com/zhmodikov/">
                   <img
                     alt="facebookButton"
                     src={facebookLogo}
@@ -129,33 +136,45 @@ class Sidebar extends React.Component {
               alt="hamburgerMenu"
               src={hamburgerLogo}
               height="25px"
-              onClick={this.MenuClick}
+              onClick={this.HamburgerClick}
             />
           </div>
           <div style={{ display: this.state.menuVisible ? "inherit" : "none" }}>
             <List className="MaterialUiListMobile" disablePadding dense>
               <ListItem key="Home" button>
-                <Link to="Home" className="listItem">
+                <Link to="Home" className="listItem" onClick={this.MenuClick}>
                   {t("sidebar.Home")}
                 </Link>
               </ListItem>
-              <ListItem key="Portfolio" button onClick={this.PortfolioClick}>
-                <Link to="PortfolioMain" className="listItem">
+              <ListItem key="Portfolio" button>
+                <Link
+                  to="PortfolioMain"
+                  className="listItem"
+                  onClick={this.MenuClick}
+                >
                   {t("sidebar.Portfolio")}
                 </Link>
               </ListItem>
-              <ListItem key="Projects" button onClick={this.ProjectsClick}>
-                <Link to="ProjectsMain" className="listItem">
+              <ListItem key="Projects" button>
+                <Link
+                  to="ProjectsMain"
+                  className="listItem"
+                  onClick={this.MenuClick}
+                >
                   {t("sidebar.Projects")}
                 </Link>
               </ListItem>
               <ListItem key="About" button>
-                <Link to="About" className="listItem">
+                <Link to="About" className="listItem" onClick={this.MenuClick}>
                   {t("sidebar.About")}
                 </Link>
               </ListItem>
               <ListItem key="Contacts" button>
-                <Link to="Contacts" className="listItem">
+                <Link
+                  to="Contacts"
+                  className="listItem"
+                  onClick={this.MenuClick}
+                >
                   {t("sidebar.Contacts")}
                 </Link>
               </ListItem>

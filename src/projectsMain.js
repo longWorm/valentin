@@ -39,7 +39,7 @@ class PortfolioMain extends React.Component {
             justifyContent="center"
             flexDirection="row"
           >
-            <Box key="1" justifyContent="center" p={1}>
+            <Box key="1" justifyContent="center" p={1} width="25%">
               <Typography align="left" variant="h4">
                 <Link className="listItem" to="Prj1">
                   {t("sidebar.Prj1")}
@@ -50,34 +50,15 @@ class PortfolioMain extends React.Component {
             <Box key="2" justifyContent="center" p={1} width="25%">
               <img className="img" src={this.section5[index2]} alt="Logo2" />
             </Box>
-            <Box key="3" justifyContent="center" p={1} width="25%">
+            <Box key="3" justifyContent="center" p={1} width="50%">
               <Typography variant="h4">
-                Empty bottles on the table
+                {t("Projects.text1")}
                 <br />
-                Black roses on the ground <br />
-                Silhouettes of people dancing
                 <br />
-                To an unfamiliar sound
+                {t("Projects.text2")}
                 <br />
-                Hello stranger
                 <br />
-                Can I call you a friend? My friend, I'm going down
-                <br />
-                With empty bottles on the table
-                <br />
-                Black roses on the ground
-              </Typography>
-            </Box>
-            <Box key="4" justifyContent="center" p={1} width="25%">
-              <Typography align="right" variant="h4">
-                Ground bottle six with the permanent bliss <br />
-                Razor sharp glass lips, give me a kiss <br />
-                Eyes fixated with the familiar shape <br />
-                Black label, white letters, they integrate <br />
-                Cubans in the bar room with harpoons <br />
-                I bloom in the night fog like mushrooms <br />
-                See every bullet hole in the window of my past <br />
-                Now that's what I call a shot glass (two, three, four)
+                {t("Projects.text3")}
               </Typography>
             </Box>
           </Box>
