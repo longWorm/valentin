@@ -88,15 +88,7 @@ class App extends React.Component {
                   <br />
                 </Route>
                 <Route path="/About">
-                  <About />
-                  {/* <br />
-                  {t("About.text1")}
-                  <br />
-                  <br />
-                  {t("About.text2")}
-                  <br />
-                  <br />
-                  {t("About.text3")} */}
+                  <About pc={pc} />
                 </Route>
               </Switch>
             </div>
@@ -172,14 +164,7 @@ class App extends React.Component {
                   <br />
                 </Route>
                 <Route path="/About">
-                  <br />
-                  {t("About.text1")}
-                  <br />
-                  <br />
-                  {t("About.text2")}
-                  <br />
-                  <br />
-                  {t("About.text3")}
+                  <About pc={pc} />
                 </Route>
               </Switch>
             </div>

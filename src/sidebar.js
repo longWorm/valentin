@@ -64,27 +64,27 @@ class Sidebar extends React.Component {
             <div className="sidebar2">
               <List className="MaterialUiList" disablePadding>
                 <ListItem key="Home" button>
-                  <Link to="Home" className="listItem">
+                  <Link to="/Home" className="listItem">
                     {t("sidebar.Home")}
                   </Link>
                 </ListItem>
                 <ListItem key="Portfolio" button onClick={this.PortfolioClick}>
-                  <Link to="PortfolioMain" className="listItem">
+                  <Link to="/PortfolioMain" className="listItem">
                     {t("sidebar.Portfolio")}
                   </Link>
                 </ListItem>
                 <ListItem key="Projects" button onClick={this.ProjectsClick}>
-                  <Link to="ProjectsMain" className="listItem">
+                  <Link to="/ProjectsMain" className="listItem">
                     {t("sidebar.Projects")}
                   </Link>
                 </ListItem>
                 <ListItem key="About" button>
-                  <Link to="About" className="listItem">
+                  <Link to="/About" className="listItem">
                     {t("sidebar.About")}
                   </Link>
                 </ListItem>
                 <ListItem key="Contacts" button>
-                  <Link to="Contacts" className="listItem">
+                  <Link to="/Contacts" className="listItem">
                     {t("sidebar.Contacts")}
                   </Link>
                 </ListItem>
@@ -142,13 +142,13 @@ class Sidebar extends React.Component {
           <div style={{ display: this.state.menuVisible ? "inherit" : "none" }}>
             <List className="MaterialUiListMobile" disablePadding dense>
               <ListItem key="Home" button>
-                <Link to="Home" className="listItem" onClick={this.MenuClick}>
+                <Link to="/Home" className="listItem" onClick={this.MenuClick}>
                   {t("sidebar.Home")}
                 </Link>
               </ListItem>
               <ListItem key="Portfolio" button>
                 <Link
-                  to="PortfolioMain"
+                  to="/PortfolioMain"
                   className="listItem"
                   onClick={this.MenuClick}
                 >
@@ -157,7 +157,7 @@ class Sidebar extends React.Component {
               </ListItem>
               <ListItem key="Projects" button>
                 <Link
-                  to="ProjectsMain"
+                  to="/ProjectsMain"
                   className="listItem"
                   onClick={this.MenuClick}
                 >
@@ -165,13 +165,13 @@ class Sidebar extends React.Component {
                 </Link>
               </ListItem>
               <ListItem key="About" button>
-                <Link to="About" className="listItem" onClick={this.MenuClick}>
+                <Link to="/About" className="listItem" onClick={this.MenuClick}>
                   {t("sidebar.About")}
                 </Link>
               </ListItem>
               <ListItem key="Contacts" button>
                 <Link
-                  to="Contacts"
+                  to="/Contacts"
                   className="listItem"
                   onClick={this.MenuClick}
                 >

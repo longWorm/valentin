@@ -3,6 +3,36 @@
   height: 100vh;
 }
 
+.gridlist {
+  height: 100%;
+  width: 100%;
+}
+
 .MuiBox-root MuiBox-root-21 {
+  height: 600;
+}
+
+.listItem {
+  color: black;
+  text-decoration: none;
+  font-weight: bold;
+  align-self: center;
+}
+
+.link {
+  color: black;
+  text-decoration: none;
+  font-weight: bold;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.MaterialUiList {
+  display: inline-flex;
+  justify-self: center;
+}
+
+.cardMedia {
   height: 600;
 }
