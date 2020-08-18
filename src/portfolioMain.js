@@ -66,6 +66,25 @@ class PortfolioMain extends React.Component {
     else this.setState({ selectedProject: 1 });
   }
 
+  GetProjectUrl() {
+    switch (this.state.selectedProject) {
+      case 1:
+        return "Portraits";
+
+      case 2:
+        return "Places";
+
+      case 3:
+        return "Moments";
+
+      case 4:
+        return "Commercial";
+
+      default:
+        return undefined;
+    }
+  }
+
   GetProjectTitle() {
     switch (this.state.selectedProject) {
       case 1:
@@ -166,7 +185,7 @@ class PortfolioMain extends React.Component {
       return (
         <div className="photoContainer">
           <Typography className="text" align="left" variant="h4">
-            <Link className="listItem" to="Prj1">
+            <Link className="listItem" to={this.GetProjectUrl()}>
               {this.GetProjectTitle()}
             </Link>
           </Typography>
