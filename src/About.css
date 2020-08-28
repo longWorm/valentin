@@ -8,6 +8,13 @@
   width: 100%;
 }
 
+.mobileGridList {
+  height: 600;
+  width: 100%;
+}
+.MuiBox-root-46 {
+  height: 100%;
+}
 .MuiBox-root MuiBox-root-21 {
   height: 600;
 }

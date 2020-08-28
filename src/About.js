@@ -5,9 +5,6 @@ import {
   Box,
   List,
   ListItem,
-  Card,
-  CardContent,
-  CardMedia,
   GridList,
   Grid
 } from "@material-ui/core";
@@ -24,11 +21,13 @@ import award3 from "./public/Photos/about/award3.png";
 import award4 from "./public/Photos/about/award4.jpg";
 
 import inked1 from "./public/Photos/about/inked/1.jpg";
-import inked2 from "./public/Photos/about/inked/2.jpg";
 import inked3 from "./public/Photos/about/inked/3.jpg";
-import inked4 from "./public/Photos/about/inked/4.jpg";
-import inked5 from "./public/Photos/about/inked/5.jpg";
-import inked6 from "./public/Photos/about/inked/6.jpg";
+import inked7 from "./public/Photos/about/inked/7.jpg";
+import inked8 from "./public/Photos/about/inked/8.jpg";
+import inked9 from "./public/Photos/about/inked/9.jpg";
+import inked10 from "./public/Photos/about/inked/10.jpg";
+import inked11 from "./public/Photos/about/inked/11.jpg";
+import inked12 from "./public/Photos/about/inked/12.jpg";
 
 import misfit1 from "./public/Photos/about/misfit/1.jpg";
 import misfit2 from "./public/Photos/about/misfit/2.jpg";
@@ -139,15 +138,20 @@ class About extends React.Component {
                   <Typography align="center" variant="subtitle1">
                     TTISM, ISSUE 4, 2020 & INKED AUSTRALIA, ISSUE 44, 2017
                   </Typography>
-                  <img src={inked1} alt="inked1" width="600" />
+                  <img src={inked11} alt="inked11" width="600" />
+                </Grid>
+                <Grid item xs={2}>
+                  <img src={inked9} alt="inked9" width="300" />
+                  <img src={inked12} alt="inked9" width="300" />
+                </Grid>
+                <Grid item xs={2}>
+                  <img src={inked7} alt="inked2" width="300" />
+                  <img src={inked10} alt="inked3" width="300" />
+                  <img src={inked8} alt="inked3" width="300" />
                 </Grid>
                 <Grid item xs={4}>
-                  <img src={inked2} alt="inked2" width="600" />
-                  <img src={inked3} alt="inked3" width="600" />
-                </Grid>
-                <Grid item xs={4}>
-                  <img src={inked4} alt="inked4" width="600" />
-                  <img src={inked5} alt="inked5" width="600" />
+                  <img src={inked1} alt="inked4" width="600" />
+                  <img src={inked3} alt="inked5" width="600" />
                 </Grid>
               </Grid>
             </Box>
@@ -212,49 +216,113 @@ class About extends React.Component {
       );
     } else {
       return (
-        <Box display="flex" flexDirection="column">
-          <List className="MaterialUiList" disablePadding>
-            <ListItem key="Bio" button>
-              <Typography>
-                <Link to="/About/Bio" className="listItem">
-                  {t("About.Bio")}
+        <GridList className="gridlist" cols={1}>
+          <Box display="flex" flexDirection="column">
+            <List className="MaterialUiList" disablePadding>
+              <ListItem key="Bio" button>
+                <Typography>
+                  <Link to="/About/Bio" className="listItem">
+                    {t("About.Bio")}
+                  </Link>
+                </Typography>
+              </ListItem>
+              <ListItem key="Interviews" button>
+                <Link to="/About/Interviews" className="listItem">
+                  {t("About.Interviews")}
                 </Link>
-              </Typography>
-            </ListItem>
-            <ListItem key="Interviews" button>
-              <Link to="/About/Interviews" className="listItem">
-                {t("About.Interviews")}
-              </Link>
-            </ListItem>
-            <ListItem key="Publications" button alignItems="center">
-              <Link to="/About/Publications" className="listItem">
-                {t("About.Publications")}
-              </Link>
-            </ListItem>
-          </List>
-          <Switch>
-            <Route path="/About/Bio">
-              <Card>
-                <CardContent>
-                  <CardMedia component="img" image={avatar} height="600" />
-                  <Typography align="center" variant="subtitle1">
-                    {t("About.text1")}
-                    <br />
-                    <br />
-                    {t("About.text2")}
-                    <br />
-                    <br />
-                    {t("About.text3")}
-                    <br />
-                    <br />
-                  </Typography>
-                </CardContent>
-              </Card>
-            </Route>
-            <Route path="/About/Interviews">INTERVIEWS</Route>
-            <Route path="/About/Publications">PUBLICATIONS</Route>
-          </Switch>
-        </Box>
+              </ListItem>
+              <ListItem key="Publications" button alignItems="center">
+                <Link to="/About/Publications" className="listItem">
+                  {t("About.Publications")}
+                </Link>
+              </ListItem>
+            </List>
+            <Switch>
+              <Route path="/About/Bio">
+                <img alt="avatar" src={avatar} width="100%" />
+                <Typography align="center">
+                  {t("About.text1")}
+                  <br />
+                  <br />
+                  {t("About.text2")}
+                  <br />
+                  <br />
+                  {t("About.text3")}
+                  <br />
+                  <br />
+                </Typography>
+              </Route>
+              <Route path="/About/Interviews">
+                <Grid className="gridlist" container alignContent="center">
+                  <Grid item xs={6}>
+                    <Box>
+                      <img src={award} alt="award" width="150" />
+                    </Box>
+                    <Box>
+                      <img src={award2} alt="award2" width="150" />
+                    </Box>
+                  </Grid>
+
+                  <Grid item xs={6}>
+                    <Box>
+                      <img src={award3} alt="award3" width="150" />
+                    </Box>
+                    <Box>
+                      <img src={award4} alt="award4" width="150" />
+                    </Box>
+                  </Grid>
+                </Grid>
+                <Typography variant="subtitle1" align="left">
+                  <br />
+                  <br />
+                  28.04.2020 Echo Chambers
+                  <br />
+                  View: Adjusting your work to others leads to a dead-end
+                  <br />
+                  <br />
+                  06.01.2020 SBS Russia
+                  <br />
+                  Melbourne photographer Valentin Zhmodikov talks about art,
+                  tattoos and the shooting of Boris Grebenshchikov
+                  <br />
+                  <br />
+                  XX.XX.2020 Savage Thrills
+                  <br />
+                  Spending time with Russian Portrait Photographer - Valentin
+                  Zhmodikov
+                </Typography>
+              </Route>
+              <Route path="/About/Publications">
+                <Grid className="gridlist" container spacing={1}>
+                  <Grid item xs={12}>
+                    TTISM, ISSUE 4, 2020
+                    <img src={inked11} alt="inked11" width="100%" />
+                  </Grid>
+                  <Grid item xs={6}>
+                    <img src={inked9} alt="inked9" width="100%" />
+                  </Grid>
+                  <Grid item xs={6}>
+                    <img src={inked7} alt="inked7" width="100%" />
+                    <img src={inked10} alt="inked10" width="100%" />
+                  </Grid>
+                  <Grid item xs={6}>
+                    <img src={inked12} alt="inked12" width="100%" />
+                  </Grid>
+                  <Grid item xs={6}>
+                    <img src={inked8} alt="inked3" width="100%" />
+                  </Grid>
+                  <Grid item xs={12}>
+                    INKED AUSTRALIA, ISSUE 44, 2017
+                    <img src={inked1} alt="inked1" width="100%" />
+                  </Grid>
+                  <Grid item xs={12}>
+                    <img src={inked3} alt="inked3" width="100%" />
+                  </Grid>
+                </Grid>
+              </Route>
+            </Switch>
+          </Box>
+        </GridList>
       );
     }
   }

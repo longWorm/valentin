@@ -41,13 +41,13 @@ class PortfolioMain extends React.Component {
         return this.section1[Math.floor(Math.random() * this.section1.length)];
 
       case 2:
-        return this.section2[Math.floor(Math.random() * this.section2.length)];
+        return this.section4[Math.floor(Math.random() * this.section4.length)];
 
       case 3:
-        return this.section3[Math.floor(Math.random() * this.section3.length)];
+        return this.section2[Math.floor(Math.random() * this.section2.length)];
 
       case 4:
-        return this.section4[Math.floor(Math.random() * this.section4.length)];
+        return this.section3[Math.floor(Math.random() * this.section3.length)];
 
       default:
         return undefined;

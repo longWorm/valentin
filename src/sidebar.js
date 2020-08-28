@@ -155,6 +155,44 @@ class Sidebar extends React.Component {
                   {t("sidebar.Portfolio")}
                 </Link>
               </ListItem>
+              <List className="MaterialUiListSublist" disablePadding dense>
+                <ListItem key="Portraits" button>
+                  <Link
+                    className="subListItem"
+                    to="/Portraits"
+                    onClick={this.MenuClick}
+                  >
+                    {t("sidebar.Portraits")}
+                  </Link>
+                </ListItem>
+                <ListItem key="Moments" button>
+                  <Link
+                    className="subListItem"
+                    to="/Moments"
+                    onClick={this.MenuClick}
+                  >
+                    {t("sidebar.Moments")}
+                  </Link>
+                </ListItem>
+                <ListItem key="Commercial" button>
+                  <Link
+                    className="subListItem"
+                    to="/Commercial"
+                    onClick={this.MenuClick}
+                  >
+                    {t("sidebar.Commercial")}
+                  </Link>
+                </ListItem>
+                <ListItem key="Places" button>
+                  <Link
+                    className="subListItem"
+                    to="/Places"
+                    onClick={this.MenuClick}
+                  >
+                    {t("sidebar.Places")}
+                  </Link>
+                </ListItem>
+              </List>
               <ListItem key="Projects" button>
                 <Link
                   to="/ProjectsMain"

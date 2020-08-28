@@ -62,7 +62,7 @@ class Portfolio extends React.Component {
   }
 
   getPhotos() {
-    switch (this.state.section) {
+    switch (this.props.section) {
       case "1":
         return this.section1;
       case "2":
@@ -82,7 +82,7 @@ class Portfolio extends React.Component {
 
   render() {
     var photos = this.getPhotos();
-    if (this.state.pc) {
+    if (this.props.pc) {
       return (
         <GridList className="gridlist" cols={1}>
           <Box display="flex" flexWrap="wrap" justifyContent="center">

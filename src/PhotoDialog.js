@@ -12,12 +12,7 @@ function PhotoDialog(props) {
   };
   const height = document.body.clientHeight * 0.9;
   return (
-    <Dialog
-      className="dialog"
-      onClose={handleClose}
-      open={open}
-      maxWidth="none"
-    >
+    <Dialog className="dialog" onClose={handleClose} open={open}>
       <Box
         display="flex"
         flexWrap="nowrap"
