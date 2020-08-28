@@ -238,22 +238,11 @@ class About extends React.Component {
               </ListItem>
             </List>
             <Switch>
-              <Route path="/About/Bio">
-                <img alt="avatar" src={avatar} width="100%" />
-                <Typography align="center">
-                  {t("About.text1")}
-                  <br />
-                  <br />
-                  {t("About.text2")}
-                  <br />
-                  <br />
-                  {t("About.text3")}
-                  <br />
-                  <br />
-                </Typography>
-              </Route>
               <Route path="/About/Interviews">
                 <Grid className="gridlist" container alignContent="center">
+                  <br />
+                  <br />
+
                   <Grid item xs={6}>
                     <Box>
                       <img src={award} alt="award" width="150" />
@@ -319,6 +308,20 @@ class About extends React.Component {
                     <img src={inked3} alt="inked3" width="100%" />
                   </Grid>
                 </Grid>
+              </Route>
+              <Route path="/About">
+                <img alt="avatar" src={avatar} width="100%" />
+                <Typography align="center">
+                  {t("About.text1")}
+                  <br />
+                  <br />
+                  {t("About.text2")}
+                  <br />
+                  <br />
+                  {t("About.text3")}
+                  <br />
+                  <br />
+                </Typography>
               </Route>
             </Switch>
           </Box>
