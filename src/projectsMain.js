@@ -1,6 +1,7 @@
 import "./projectsMain.css";
 import React from "react";
-import Box from "@material-ui/core/Box";
+import { GridList, Grid } from "@material-ui/core";
+
 import Typography from "@material-ui/core/Typography";
 import { Link } from "react-router-dom";
 import { t } from "react-switch-lang";
@@ -32,26 +33,21 @@ class PortfolioMain extends React.Component {
 
     if (this.pc) {
       return (
-        <div>
-          <Box
-            display="flex"
-            flexWrap="nowrap"
-            justifyContent="center"
-            flexDirection="row"
-          >
-            <Box key="1" justifyContent="center" p={1} width="25%">
+        <GridList className="gridlist" cols={1}>
+          <Grid className="gridlist" container>
+            <Grid item xs={3}>
               <Typography align="left" variant="h4">
                 <Link className="listItem" to="Prj1">
                   {t("sidebar.Prj1")}
                 </Link>
               </Typography>
               <img className="img" src={this.section5[index1]} alt="Logo1" />
-            </Box>
-            <Box key="2" justifyContent="center" p={1} width="25%">
+            </Grid>
+            <Grid item xs={3}>
               <img className="img" src={this.section5[index2]} alt="Logo2" />
-            </Box>
-            <Box key="3" justifyContent="center" p={1} width="50%">
-              <Typography variant="h4">
+            </Grid>
+            <Grid item xs={6}>
+              <Typography variant="h6">
                 {t("Projects.text1")}
                 <br />
                 <br />
@@ -60,9 +56,9 @@ class PortfolioMain extends React.Component {
                 <br />
                 {t("Projects.text3")}
               </Typography>
-            </Box>
-          </Box>
-        </div>
+            </Grid>
+          </Grid>
+        </GridList>
       );
     } else {
       return (

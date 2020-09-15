@@ -6,7 +6,8 @@ import {
   List,
   ListItem,
   GridList,
-  Grid
+  Grid,
+  Link as MaterialLink
 } from "@material-ui/core";
 import { Link } from "react-router-dom";
 
@@ -75,10 +76,10 @@ class About extends React.Component {
                 p={1}
               >
                 <Box>
-                  <Typography align="center" variant="h5">
+                  <Typography align="left" variant="h5">
                     {t("About.Bio")}
                   </Typography>
-                  <Typography align="center" variant="subtitle1">
+                  <Typography align="left" variant="subtitle1">
                     <br />
                     <br />
                     {t("About.text1")}
@@ -107,23 +108,29 @@ class About extends React.Component {
                     <br />
                     28.04.2020 Echo Chambers
                     <br />
-                    View: Adjusting your work to others leads to a dead-end
+                    <MaterialLink href="https://echochamberescape.com/2020/04/28/view-adjusting-your-work-to-others-leads-to-a-dead-end/">
+                      View: Adjusting your work to others leads to a dead-end
+                    </MaterialLink>
                     <br />
                     <br />
                     06.01.2020 SBS Russia
                     <br />
-                    Melbourne photographer Valentin Zhmodikov talks about art,
-                    tattoos and the shooting of Boris Grebenshchikov
+                    <MaterialLink href="https://www.sbs.com.au/language/russian/audio/interview-with-photographer-valentin-zhmodikov">
+                      Melbourne photographer Valentin Zhmodikov talks about art,
+                      tattoos and the shooting of Boris Grebenshchikov
+                    </MaterialLink>
                     <br />
                     <br />
                     XX.XX.2020 Savage Thrills
                     <br />
-                    Spending time with Russian Portrait Photographer - Valentin
-                    Zhmodikov
+                    <MaterialLink href="https://savagethrills.com/artdesign/spending-time-with-russian-portrait-photographer-valentin-zhmodikov/">
+                      Spending time with Russian Portrait Photographer -
+                      Valentin Zhmodikov
+                    </MaterialLink>
                   </Typography>
                 </Grid>
                 <Grid item xs={6}>
-                  <img src={avatar2} alt="avatar" />
+                  <img src={avatar2} alt="avatar" width="100%" />
                 </Grid>
               </Grid>
             </Box>
@@ -138,20 +145,20 @@ class About extends React.Component {
                   <Typography align="center" variant="subtitle1">
                     TTISM, ISSUE 4, 2020 & INKED AUSTRALIA, ISSUE 44, 2017
                   </Typography>
-                  <img src={inked11} alt="inked11" width="600" />
+                  <img src={inked11} alt="inked11" width="100%" />
                 </Grid>
                 <Grid item xs={2}>
-                  <img src={inked9} alt="inked9" width="300" />
-                  <img src={inked12} alt="inked9" width="300" />
+                  <img src={inked9} alt="inked9" width="100%" />
+                  <img src={inked12} alt="inked9" width="100%" />
                 </Grid>
                 <Grid item xs={2}>
-                  <img src={inked7} alt="inked2" width="300" />
-                  <img src={inked10} alt="inked3" width="300" />
-                  <img src={inked8} alt="inked3" width="300" />
+                  <img src={inked7} alt="inked2" width="100%" />
+                  <img src={inked10} alt="inked3" width="100%" />
+                  <img src={inked8} alt="inked3" width="100%" />
                 </Grid>
                 <Grid item xs={4}>
-                  <img src={inked1} alt="inked4" width="600" />
-                  <img src={inked3} alt="inked5" width="600" />
+                  <img src={inked1} alt="inked4" width="100%" />
+                  <img src={inked3} alt="inked5" width="100%" />
                 </Grid>
               </Grid>
             </Box>
@@ -159,11 +166,11 @@ class About extends React.Component {
             <Box display="flex">
               <Grid className="gridlist" container>
                 <Grid item xs={4}>
-                  <img src={misfit1} alt="misfit1" width="600" />
+                  <img src={misfit1} alt="misfit1" width="100%" />
                 </Grid>
                 <Grid item xs={4}>
-                  <img src={misfit2} alt="misfit2" width="600" height="422" />
-                  <img src={misfit3} alt="misfit3" width="600" height="422" />
+                  <img src={misfit2} alt="misfit2" width="100%" />
+                  <img src={misfit3} alt="misfit3" width="100%" />
                 </Grid>
                 <Grid item xs={4}>
                   <Typography align="center" variant="h5">
@@ -174,7 +181,7 @@ class About extends React.Component {
                   <Typography align="center" variant="subtitle1">
                     MSIFIT, AUGUST, 2016 & BROAD MAGAZINE, ISSUE 3, 2017
                   </Typography>
-                  <img src={misfit4} alt="misfit4" width="600" />
+                  <img src={misfit4} alt="misfit4" width="100%" />
                 </Grid>
                 <Grid item xs={4}></Grid>
               </Grid>
@@ -203,11 +210,11 @@ class About extends React.Component {
                   </Typography>
                 </Grid>
                 <Grid item xs={4}>
-                  <img src={online1} alt="online1" width="600" />
-                  <img src={online2} alt="online2" width="600" />
+                  <img src={online1} alt="online1" width="100%" />
+                  <img src={online2} alt="online2" width="100%" />
                 </Grid>
                 <Grid item xs={4}>
-                  <img src={online3} alt="online3" width="600" />
+                  <img src={online3} alt="online3" width="100%" />
                 </Grid>
               </Grid>
             </Box>
