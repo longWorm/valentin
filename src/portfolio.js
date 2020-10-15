@@ -3,9 +3,17 @@ import React from "react";
 import Box from "@material-ui/core/Box";
 import GridList from "@material-ui/core/GridList";
 import PhotoDialog from "./PhotoDialog";
+import * as AWS from "aws-sdk";
 
 class Portfolio extends React.Component {
   constructor(props) {
+    AWS.config.update({
+      region: "ap-southeast-2",
+      endpoint: "dynamodb.ap-southeast-2.amazonaws.com",
+      accessKeyId: "AKIA3TRSEJB4NCVGRMET",
+      secretAccessKey: "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"
+    });
+
     super(props);
     this.state = { open: false, section: props.section, pc: props.pc };
 
@@ -13,25 +21,25 @@ class Portfolio extends React.Component {
     this.OnPhotoClose = this.OnPhotoClose.bind(this);
     this.OnNextPhoto = this.OnNextPhoto.bind(this);
     this.OnPreviousPhoto = this.OnPreviousPhoto.bind(this);
+  }
 
-    this.section1 = this.importAll(
-      require.context("./public/Photos/1", false, /\.(png|jpe?g|svg)$/)
-    );
-    this.section2 = this.importAll(
-      require.context("./public/Photos/2", false, /\.(png|jpe?g|svg)$/)
-    );
-    this.section3 = this.importAll(
-      require.context("./public/Photos/3", false, /\.(png|jpe?g|svg)$/)
-    );
-    this.section4 = this.importAll(
-      require.context("./public/Photos/4", false, /\.(png|jpe?g|svg)$/)
-    );
-    this.section5 = this.importAll(
-      require.context("./public/Photos/5", false, /\.(png|jpe?g|svg)$/)
-    );
-    this.section6 = this.importAll(
-      require.context("./public/Photos/6", false, /\.(png|jpe?g|svg)$/)
-    );
+  async getPhotosFromSection(section) {
+    let docClient = new AWS.DynamoDB.DocumentClient();
+
+    var params = {
+      TableName: "photo",
+      FilterExpression: "#sectionaa = :s and #use = :useFor",
+      ExpressionAttributeValues: {
+        ":s": section,
+        ":useFor": true
+      },
+      ExpressionAttributeNames: {
+        "#sectionaa": "section",
+        "#use": "useForHomePage"
+      }
+    };
+
+    return await docClient.scan(params).promise();
   }
 
   OnPhotoClose() {
@@ -57,27 +65,34 @@ class Portfolio extends React.Component {
     else this.setState({ selectedImage: photos[photos.length - 1] });
   }
 
-  importAll(r) {
-    return r.keys().map(r);
-  }
-
   getPhotos() {
     switch (this.props.section) {
       case "1":
-        return this.section1;
+        return this.state.section1;
       case "2":
-        return this.section2;
+        return this.state.section2;
       case "3":
-        return this.section3;
+        return this.state.section3;
       case "4":
-        return this.section4;
+        return this.state.section4;
       case "5":
-        return this.section5;
+        return this.state.section5;
       case "6":
-        return this.section6;
+        return this.state.section6;
       default:
         return [];
     }
+  }
+
+  async componentDidMount() {
+    this.setState({
+      ...this.state,
+      section1: await this.getPhotosFromSection(1),
+      section2: await this.getPhotosFromSection(2),
+      section3: await this.getPhotosFromSection(3),
+      section4: await this.getPhotosFromSection(4),
+      section5: await this.getPhotosFromSection(5)
+    });
   }
 
   render() {
@@ -86,26 +101,34 @@ class Portfolio extends React.Component {
       return (
         <GridList className="gridlist" cols={1}>
           <Box display="flex" flexWrap="wrap" justifyContent="center">
-            {photos.map((image, index) => (
-              <Box key={image} justifyContent="center" p={1}>
-                <img
-                  src={image}
-                  alt="PortraitsLogo"
-                  height="300px"
-                  onClick={() => this.OnPhotoClicked(image)}
-                />
-              </Box>
-            ))}
+            {photos !== undefined ? (
+              photos.Items.map((image, index) => (
+                <Box key={image.id} justifyContent="center" p={1}>
+                  <img
+                    src={image.url}
+                    alt="PortraitsLogo"
+                    height="300px"
+                    onClick={() => this.OnPhotoClicked(image)}
+                  />
+                </Box>
+              ))
+            ) : (
+              <br />
+            )}
           </Box>
 
-          <PhotoDialog
-            open={this.state.open}
-            selectedImage={this.state.selectedImage}
-            onClose={this.OnPhotoClose}
-            section={this.props.section}
-            nextPhoto={this.OnNextPhoto}
-            previousPhoto={this.OnPreviousPhoto}
-          />
+          {this.state.selectedImage !== undefined ? (
+            <PhotoDialog
+              open={this.state.open}
+              selectedImage={this.state.selectedImage.url}
+              onClose={this.OnPhotoClose}
+              section={this.props.section}
+              nextPhoto={this.OnNextPhoto}
+              previousPhoto={this.OnPreviousPhoto}
+            />
+          ) : (
+            <br />
+          )}
         </GridList>
       );
     } else {
@@ -113,26 +136,34 @@ class Portfolio extends React.Component {
       return (
         <GridList className="gridlist" cols={1}>
           <Box display="flex" flexWrap="wrap" justifyContent="center">
-            {photos.map((image, index) => (
-              <Box key={image} justifyContent="center" p={1}>
-                <img
-                  src={image}
-                  alt="PortraitsLogo"
-                  onClick={() => this.OnPhotoClicked(image)}
-                  width={width}
-                />
-              </Box>
-            ))}
+            {photos !== undefined ? (
+              photos.Items.map((image, index) => (
+                <Box key={image.id} justifyContent="center" p={1}>
+                  <img
+                    src={image.url}
+                    alt="PortraitsLogo"
+                    onClick={() => this.OnPhotoClicked(image)}
+                    width={width}
+                  />
+                </Box>
+              ))
+            ) : (
+              <br />
+            )}
           </Box>
 
-          <PhotoDialog
-            open={this.state.open}
-            selectedImage={this.state.selectedImage}
-            onClose={this.OnPhotoClose}
-            section={this.props.section}
-            nextPhoto={this.OnNextPhoto}
-            previousPhoto={this.OnPreviousPhoto}
-          />
+          {this.state.selectedImage !== undefined ? (
+            <PhotoDialog
+              open={this.state.open}
+              selectedImage={this.state.selectedImage.url}
+              onClose={this.OnPhotoClose}
+              section={this.props.section}
+              nextPhoto={this.OnNextPhoto}
+              previousPhoto={this.OnPreviousPhoto}
+            />
+          ) : (
+            <br />
+          )}
         </GridList>
       );
     }

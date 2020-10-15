@@ -8,6 +8,7 @@ import hamburgerLogo from "./public/hamburger_menu.png";
 import facebookLogo from "./public/facebook.png";
 import instagramLogo from "./public/instagram.png";
 import mailLogo from "./public/mail.png";
+import Button from "@material-ui/core/Button";
 
 function click() {
   let lang = getLanguage();
@@ -92,7 +93,7 @@ class Sidebar extends React.Component {
             </div>
           </div>
           <div className="langPanel">
-            <span onClick={click}>{getLanguage()}</span>
+            <Button onClick={click}>{getLanguage()}</Button>
             <span>
               <div className="contactIcons">
                 <a href="https://www.instagram.com/zhmodikov/?hl=en">

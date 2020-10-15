@@ -6,31 +6,51 @@ import Typography from "@material-ui/core/Typography";
 import { Link } from "react-router-dom";
 import { t } from "react-switch-lang";
 import Button from "@material-ui/core/Button";
+import * as AWS from "aws-sdk";
 
 class PortfolioMain extends React.Component {
   constructor(props) {
+    AWS.config.update({
+      region: "ap-southeast-2",
+      endpoint: "dynamodb.ap-southeast-2.amazonaws.com",
+      accessKeyId: "AKIA3TRSEJB4NCVGRMET",
+      secretAccessKey: "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"
+    });
+
     super(props);
     this.pc = props.pc;
-    this.section5 = this.importAll(
-      require.context("./public/Photos/5", false, /\.(png|jpe?g|svg)$/)
-    );
-    this.section6 = this.importAll(
-      require.context("./public/Photos/6", false, /\.(png|jpe?g|svg)$/)
-    );
+    this.state = {};
   }
 
-  shouldComponentUpdate(nextProps, nextState) {
-    return false;
+  async getRandomPhotoFromSection(section) {
+    let docClient = new AWS.DynamoDB.DocumentClient();
+
+    var params = {
+      TableName: "photo",
+      FilterExpression: "#sectionaa = :s and #use = :useFor",
+      ExpressionAttributeValues: {
+        ":s": section,
+        ":useFor": true
+      },
+      ExpressionAttributeNames: {
+        "#sectionaa": "section",
+        "#use": "useForHomePage"
+      }
+    };
+
+    let items = await docClient.scan(params).promise();
+    return items.Items[Math.floor(Math.random() * items.Items.length)];
   }
 
-  importAll(r) {
-    return r.keys().map(r);
+  async componentDidMount() {
+    this.setState({
+      ...this.state,
+      randomPhoto1: await this.getRandomPhotoFromSection(5),
+      randomPhoto2: await this.getRandomPhotoFromSection(5)
+    });
   }
 
   render() {
-    var index1 = Math.floor(Math.random() * this.section5.length);
-    var index2 = index1 < this.section5.length - 1 ? index1 + 1 : index1 - 1;
-
     if (this.pc) {
       return (
         <GridList className="gridlist" cols={1}>
@@ -41,10 +61,26 @@ class PortfolioMain extends React.Component {
                   {t("sidebar.Prj1")}
                 </Link>
               </Typography>
-              <img className="img" src={this.section5[index1]} alt="Logo1" />
+              {this.state.randomPhoto1 !== undefined ? (
+                <img
+                  className="img"
+                  src={this.state.randomPhoto1.url}
+                  alt="Logo1"
+                />
+              ) : (
+                <br />
+              )}
             </Grid>
             <Grid item xs={3}>
-              <img className="img" src={this.section5[index2]} alt="Logo2" />
+              {this.state.randomPhoto2 !== undefined ? (
+                <img
+                  className="img"
+                  src={this.state.randomPhoto2.url}
+                  alt="Logo2"
+                />
+              ) : (
+                <br />
+              )}
             </Grid>
             <Grid item xs={6}>
               <Typography variant="h6">
@@ -79,7 +115,15 @@ class PortfolioMain extends React.Component {
             </Typography>
           </Button>
           <div className="photo">
-            <img className="img" src={this.section5[index1]} alt="Logo1" />
+            {this.state.randomPhoto1 !== undefined ? (
+              <img
+                className="img"
+                src={this.state.randomPhoto1.url}
+                alt="Logo1"
+              />
+            ) : (
+              <br />
+            )}
           </div>
         </div>
       );

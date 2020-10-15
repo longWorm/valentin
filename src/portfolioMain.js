@@ -4,9 +4,17 @@ import Box from "@material-ui/core/Box";
 import Typography from "@material-ui/core/Typography";
 import { Link } from "react-router-dom";
 import Button from "@material-ui/core/Button";
+import * as AWS from "aws-sdk";
 
 class PortfolioMain extends React.Component {
   constructor(props) {
+    AWS.config.update({
+      region: "ap-southeast-2",
+      endpoint: "dynamodb.ap-southeast-2.amazonaws.com",
+      accessKeyId: "AKIA3TRSEJB4NCVGRMET",
+      secretAccessKey: "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"
+    });
+
     super(props);
     this.pc = props.pc;
     this.state = { selectedProject: 1 };
@@ -16,38 +24,51 @@ class PortfolioMain extends React.Component {
     );
     this.PreviousProject = this.PreviousProject.bind(this);
     this.NextProject = this.NextProject.bind(this);
-
-    this.section1 = this.importAll(
-      require.context("./public/Photos/1", false, /\.(png|jpe?g|svg)$/)
-    );
-    this.section2 = this.importAll(
-      require.context("./public/Photos/2", false, /\.(png|jpe?g|svg)$/)
-    );
-    this.section3 = this.importAll(
-      require.context("./public/Photos/3", false, /\.(png|jpe?g|svg)$/)
-    );
-    this.section4 = this.importAll(
-      require.context("./public/Photos/4", false, /\.(png|jpe?g|svg)$/)
-    );
   }
 
-  importAll(r) {
-    return r.keys().map(r);
+  async getRandomPhotoFromSection(section) {
+    let docClient = new AWS.DynamoDB.DocumentClient();
+
+    var params = {
+      TableName: "photo",
+      FilterExpression: "#sectionaa = :s and #use = :useFor",
+      ExpressionAttributeValues: {
+        ":s": section,
+        ":useFor": true
+      },
+      ExpressionAttributeNames: {
+        "#sectionaa": "section",
+        "#use": "useForHomePage"
+      }
+    };
+
+    let items = await docClient.scan(params).promise();
+    return items.Items[Math.floor(Math.random() * items.Items.length)];
+  }
+
+  async componentDidMount() {
+    this.setState({
+      ...this.state,
+      randomPhoto1: await this.getRandomPhotoFromSection(1),
+      randomPhoto2: await this.getRandomPhotoFromSection(2),
+      randomPhoto3: await this.getRandomPhotoFromSection(3),
+      randomPhoto4: await this.getRandomPhotoFromSection(4)
+    });
   }
 
   GetRandomPhotoFromSelectedProject() {
     switch (this.state.selectedProject) {
       case 1:
-        return this.section1[Math.floor(Math.random() * this.section1.length)];
+        return this.state.randomPhoto1;
 
       case 2:
-        return this.section4[Math.floor(Math.random() * this.section4.length)];
+        return this.state.randomPhoto2;
 
       case 3:
-        return this.section2[Math.floor(Math.random() * this.section2.length)];
+        return this.state.randomPhoto3;
 
       case 4:
-        return this.section3[Math.floor(Math.random() * this.section3.length)];
+        return this.state.randomPhoto4;
 
       default:
         return undefined;
@@ -72,13 +93,13 @@ class PortfolioMain extends React.Component {
         return "Portraits";
 
       case 2:
-        return "Places";
-
-      case 3:
         return "Moments";
 
-      case 4:
+      case 3:
         return "Commercial";
+
+      case 4:
+        return "Places";
 
       default:
         return undefined;
@@ -91,13 +112,13 @@ class PortfolioMain extends React.Component {
         return "FACES";
 
       case 2:
-        return "PLACES";
-
-      case 3:
         return "ACTION";
 
-      case 4:
+      case 3:
         return "COMMERCE";
+
+      case 4:
+        return "PLACES";
 
       default:
         return undefined;
@@ -120,68 +141,69 @@ class PortfolioMain extends React.Component {
                   FACES
                 </Link>
               </Typography>
-              <img
-                className="img"
-                src={
-                  this.section1[
-                    Math.floor(Math.random() * this.section1.length)
-                  ]
-                }
-                alt="Logo1"
-              />
+              {this.state.randomPhoto1 !== undefined ? (
+                <img
+                  className="img"
+                  src={this.state.randomPhoto1.url}
+                  alt="Logo1"
+                />
+              ) : (
+                <br />
+              )}
             </Box>
             <Box key="2" justifyContent="center" p={1}>
               <Typography align="left" variant="h4">
                 <Link className="listItem" to="Places">
-                  PLACES
+                  ACTION
                 </Link>
               </Typography>
-              <img
-                className="img"
-                src={
-                  this.section4[
-                    Math.floor(Math.random() * this.section4.length)
-                  ]
-                }
-                alt="Logo2"
-              />
+              {this.state.randomPhoto2 !== undefined ? (
+                <img
+                  className="img"
+                  src={this.state.randomPhoto2.url}
+                  alt="Logo2"
+                />
+              ) : (
+                <br />
+              )}
             </Box>
             <Box key="3" justifyContent="center" p={1}>
               <Typography align="right" variant="h4">
                 <Link className="listItem" to="Moments">
-                  ACTION
+                  COMMERCE
                 </Link>
               </Typography>
-              <img
-                className="img"
-                src={
-                  this.section2[
-                    Math.floor(Math.random() * this.section2.length)
-                  ]
-                }
-                alt="Logo3"
-              />
+              {this.state.randomPhoto3 !== undefined ? (
+                <img
+                  className="img"
+                  src={this.state.randomPhoto3.url}
+                  alt="Logo3"
+                />
+              ) : (
+                <br />
+              )}
             </Box>
             <Box key="4" justifyContent="center" p={1}>
               <Typography align="right" variant="h4">
                 <Link className="listItem" to="Commercial">
-                  COMMERCE
+                  PLACES
                 </Link>
               </Typography>
-              <img
-                className="img"
-                src={
-                  this.section3[
-                    Math.floor(Math.random() * this.section3.length)
-                  ]
-                }
-                alt="Logo4"
-              />
+              {this.state.randomPhoto4 !== undefined ? (
+                <img
+                  className="img"
+                  src={this.state.randomPhoto4.url}
+                  alt="Logo4"
+                />
+              ) : (
+                <br />
+              )}
             </Box>
           </Box>
         </div>
       );
     } else {
+      let photo = this.GetRandomPhotoFromSelectedProject();
       return (
         <div className="photoContainer">
           <Typography className="text" align="left" variant="h4">
@@ -199,13 +221,13 @@ class PortfolioMain extends React.Component {
               &gt;
             </Typography>
           </Button>
-          <div className="photo">
-            <img
-              className="img"
-              src={this.GetRandomPhotoFromSelectedProject()}
-              alt={this.GetRandomPhotoFromSelectedProject()}
-            />
-          </div>
+          {photo !== undefined ? (
+            <div className="photo">
+              <img className="img" src={photo.url} alt={photo.id} />
+            </div>
+          ) : (
+            <br />
+          )}
         </div>
       );
     }

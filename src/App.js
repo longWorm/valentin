@@ -6,6 +6,7 @@ import Portfolio from "./portfolio";
 import PortfolioMain from "./portfolioMain";
 import ProjectsMain from "./projectsMain";
 import About from "./About";
+import Contacts from "./Contacts";
 
 import "./App.css";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
@@ -83,9 +84,7 @@ class App extends React.Component {
                 </Route>
                 <Route path="/Contacts">
                   {t("Contacts.text")}
-                  <br />
-                  valentin@zhmodikov.com
-                  <br />
+                  <Contacts />
                 </Route>
                 <Route path="/About">
                   <About pc={pc} />
@@ -159,9 +158,7 @@ class App extends React.Component {
                 </Route>
                 <Route path="/Contacts">
                   {t("Contacts.text")}
-                  <br />
-                  valentin@zhmodikov.com
-                  <br />
+                  <Contacts />
                 </Route>
                 <Route path="/About">
                   <About pc={pc} />

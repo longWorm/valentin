@@ -127,6 +127,13 @@ class About extends React.Component {
                       Spending time with Russian Portrait Photographer -
                       Valentin Zhmodikov
                     </MaterialLink>
+                    <br />
+                    <br />
+                    7.08.2020 Russian Influence
+                    <br />
+                    <MaterialLink href="https://www.youtube.com/watch?v=a812-hXsokA&t">
+                      Australia's best Russian photographer
+                    </MaterialLink>
                   </Typography>
                 </Grid>
                 <Grid item xs={6}>
@@ -197,16 +204,39 @@ class About extends React.Component {
                   </Typography>
                   <Typography align="left" variant="subtitle1">
                     <br />
-                    ART: NAKID, PAINTINGS ALIVE BY VALENTIN ZHMODIKOV
+                    ART:
+                    <MaterialLink href="https://nakid.online/2019/03/22/paintings-alive-by-valentin-zhmodikov-exclusive-editorial-nsfw/">
+                      NAKID, PAINTINGS ALIVE BY VALENTIN ZHMODIKOV
+                    </MaterialLink>
                     <br />
                     <br />
-                    LIFESTYLE: REBEL & CO MAGAZINE, DIVE THRU BALTISOUL, HAPPY
-                    DAYS
+                    LIFESTYLE:
+                    <MaterialLink href="https://www.rebeland.co/2016/10/a-million-engines-in-neutral.html">
+                      REBEL & CO MAGAZINE, DIVE THRU BALTISOUL,
+                    </MaterialLink>
+                    <br />
+                    <MaterialLink href="https://baltisoul.net/articles/happy-days">
+                      HAPPY DAYS
+                    </MaterialLink>
                     <br />
                     <br />
-                    MUSIC: SAVAGE THRILLS RUFUS DU SOL MELBOURNE LIVE LIARS,
-                    MELBOURNE LIVE GOGOL BARDELLO, MELBOURNE LIVE AND MANY
-                    OTHERS
+                    MUSIC:
+                    <MaterialLink href="https://savagethrills.com/music/rufus-du-sol-melbourne-live-review-2019/">
+                      SAVAGE THRILLS RUFUS DU SOL MELBOURNE
+                    </MaterialLink>
+                    ,
+                    <MaterialLink href="https://savagethrills.com/music/liars-the-band-live-review-melbourne/">
+                      LIARS LIVE
+                    </MaterialLink>
+                    ,
+                    <MaterialLink href="https://savagethrills.com/music/live-review-the-growlers-shake-melbourne/">
+                      GROWLERS SHAKE MELBOURNE
+                    </MaterialLink>
+                    ,
+                    <MaterialLink href="https://savagethrills.com/music/when-gogol-bordello-rolled-into-town-melbourne-stood-tall/">
+                      MELBOURNE LIVE GOGOL BARDELLO
+                    </MaterialLink>
+                    , AND MANY OTHERS
                   </Typography>
                 </Grid>
                 <Grid item xs={4}>
