@@ -1,49 +1,34 @@
 import "./home.css";
 import React from "react";
 import Box from "@material-ui/core/Box";
-import * as AWS from "aws-sdk";
+
+// https://0wdqxf9sbk.execute-api.us-east-1.amazonaws.com/getPhotos/getPhotosFromSection?section=3
+// https://0wdqxf9sbk.execute-api.us-east-1.amazonaws.com/getHomePagePhotos/getHomePagePhotos
 
 class Home extends React.Component {
   constructor(props) {
-    AWS.config.update({
-      region: "ap-southeast-2",
-      endpoint: "dynamodb.ap-southeast-2.amazonaws.com",
-      accessKeyId: "AKIA3TRSEJB4NCVGRMET",
-      secretAccessKey: "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"
-    });
-
     super(props);
     this.state = { pc: props.pc };
   }
 
-  async getRandomPhotoFromSection(section) {
-    let docClient = new AWS.DynamoDB.DocumentClient();
-
-    var params = {
-      TableName: "photo",
-      FilterExpression: "#sectionaa = :s and #use = :useFor",
-      ExpressionAttributeValues: {
-        ":s": section,
-        ":useFor": true
-      },
-      ExpressionAttributeNames: {
-        "#sectionaa": "section",
-        "#use": "useForHomePage"
-      }
-    };
-
-    let items = await docClient.scan(params).promise();
-    return items.Items[Math.floor(Math.random() * items.Items.length)];
+  async getHomePagePhotos() {
+    fetch(
+      "https://0wdqxf9sbk.execute-api.us-east-1.amazonaws.com/getHomePagePhotos/getHomePagePhotos"
+    )
+      .then(res => res.json())
+      .then(data =>
+        this.setState({
+          ...this.state,
+          randomPhoto1: data[0],
+          randomPhoto2: data[1],
+          randomPhoto3: data[2],
+          randomPhoto4: data[3]
+        })
+      );
   }
 
   async componentDidMount() {
-    this.setState({
-      ...this.state,
-      randomPhoto1: await this.getRandomPhotoFromSection(1),
-      randomPhoto2: await this.getRandomPhotoFromSection(2),
-      randomPhoto3: await this.getRandomPhotoFromSection(3),
-      randomPhoto4: await this.getRandomPhotoFromSection(4)
-    });
+    await this.getHomePagePhotos();
   }
 
   render() {

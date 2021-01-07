@@ -3,17 +3,9 @@ import React from "react";
 import Box from "@material-ui/core/Box";
 import GridList from "@material-ui/core/GridList";
 import PhotoDialog from "./PhotoDialog";
-import * as AWS from "aws-sdk";
 
 class Portfolio extends React.Component {
   constructor(props) {
-    AWS.config.update({
-      region: "ap-southeast-2",
-      endpoint: "dynamodb.ap-southeast-2.amazonaws.com",
-      accessKeyId: "AKIA3TRSEJB4NCVGRMET",
-      secretAccessKey: "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"
-    });
-
     super(props);
     this.state = { open: false, section: props.section, pc: props.pc };
 
@@ -24,22 +16,13 @@ class Portfolio extends React.Component {
   }
 
   async getPhotosFromSection(section) {
-    let docClient = new AWS.DynamoDB.DocumentClient();
-
-    var params = {
-      TableName: "photo",
-      FilterExpression: "#sectionaa = :s and #use = :useFor",
-      ExpressionAttributeValues: {
-        ":s": section,
-        ":useFor": true
-      },
-      ExpressionAttributeNames: {
-        "#sectionaa": "section",
-        "#use": "useForHomePage"
-      }
-    };
-
-    return await docClient.scan(params).promise();
+    return fetch(
+      "https://0wdqxf9sbk.execute-api.us-east-1.amazonaws.com/getPhotos/getPhotosFromSection?section=" +
+        section
+    )
+      .then(res => res.json())
+      .then(data => data)
+      .catch(error => console.warn(error));
   }
 
   OnPhotoClose() {

@@ -4,17 +4,9 @@ import Box from "@material-ui/core/Box";
 import Typography from "@material-ui/core/Typography";
 import { Link } from "react-router-dom";
 import Button from "@material-ui/core/Button";
-import * as AWS from "aws-sdk";
 
 class PortfolioMain extends React.Component {
   constructor(props) {
-    AWS.config.update({
-      region: "ap-southeast-2",
-      endpoint: "dynamodb.ap-southeast-2.amazonaws.com",
-      accessKeyId: "AKIA3TRSEJB4NCVGRMET",
-      secretAccessKey: "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"
-    });
-
     super(props);
     this.pc = props.pc;
     this.state = { selectedProject: 1 };
@@ -26,34 +18,24 @@ class PortfolioMain extends React.Component {
     this.NextProject = this.NextProject.bind(this);
   }
 
-  async getRandomPhotoFromSection(section) {
-    let docClient = new AWS.DynamoDB.DocumentClient();
-
-    var params = {
-      TableName: "photo",
-      FilterExpression: "#sectionaa = :s and #use = :useFor",
-      ExpressionAttributeValues: {
-        ":s": section,
-        ":useFor": true
-      },
-      ExpressionAttributeNames: {
-        "#sectionaa": "section",
-        "#use": "useForHomePage"
-      }
-    };
-
-    let items = await docClient.scan(params).promise();
-    return items.Items[Math.floor(Math.random() * items.Items.length)];
+  async getRandomPhotoFromEachSection() {
+    fetch(
+      "https://0wdqxf9sbk.execute-api.us-east-1.amazonaws.com/getHomePagePhotos/getHomePagePhotos"
+    )
+      .then(res => res.json())
+      .then(data =>
+        this.setState({
+          ...this.state,
+          randomPhoto1: data[0],
+          randomPhoto2: data[1],
+          randomPhoto3: data[2],
+          randomPhoto4: data[3]
+        })
+      );
   }
 
   async componentDidMount() {
-    this.setState({
-      ...this.state,
-      randomPhoto1: await this.getRandomPhotoFromSection(1),
-      randomPhoto2: await this.getRandomPhotoFromSection(2),
-      randomPhoto3: await this.getRandomPhotoFromSection(3),
-      randomPhoto4: await this.getRandomPhotoFromSection(4)
-    });
+    await this.getRandomPhotoFromEachSection();
   }
 
   GetRandomPhotoFromSelectedProject() {
@@ -153,7 +135,7 @@ class PortfolioMain extends React.Component {
             </Box>
             <Box key="2" justifyContent="center" p={1}>
               <Typography align="left" variant="h4">
-                <Link className="listItem" to="Places">
+                <Link className="listItem" to="Moments">
                   ACTION
                 </Link>
               </Typography>
@@ -169,7 +151,7 @@ class PortfolioMain extends React.Component {
             </Box>
             <Box key="3" justifyContent="center" p={1}>
               <Typography align="right" variant="h4">
-                <Link className="listItem" to="Moments">
+                <Link className="listItem" to="Commercial">
                   COMMERCE
                 </Link>
               </Typography>
@@ -185,7 +167,7 @@ class PortfolioMain extends React.Component {
             </Box>
             <Box key="4" justifyContent="center" p={1}>
               <Typography align="right" variant="h4">
-                <Link className="listItem" to="Commercial">
+                <Link className="listItem" to="Places">
                   PLACES
                 </Link>
               </Typography>

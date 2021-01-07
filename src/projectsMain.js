@@ -6,48 +6,30 @@ import Typography from "@material-ui/core/Typography";
 import { Link } from "react-router-dom";
 import { t } from "react-switch-lang";
 import Button from "@material-ui/core/Button";
-import * as AWS from "aws-sdk";
 
 class PortfolioMain extends React.Component {
   constructor(props) {
-    AWS.config.update({
-      region: "ap-southeast-2",
-      endpoint: "dynamodb.ap-southeast-2.amazonaws.com",
-      accessKeyId: "AKIA3TRSEJB4NCVGRMET",
-      secretAccessKey: "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"
-    });
-
     super(props);
     this.pc = props.pc;
     this.state = {};
   }
 
-  async getRandomPhotoFromSection(section) {
-    let docClient = new AWS.DynamoDB.DocumentClient();
-
-    var params = {
-      TableName: "photo",
-      FilterExpression: "#sectionaa = :s and #use = :useFor",
-      ExpressionAttributeValues: {
-        ":s": section,
-        ":useFor": true
+  async getRandomPhotoFromEachSection() {
+    this.setState({
+      ...this.state,
+      randomPhoto1: {
+        url:
+          "https://s3.us-east-2.amazonaws.com/zhmodikov.com/static/photo/5/anastasia.jpg"
       },
-      ExpressionAttributeNames: {
-        "#sectionaa": "section",
-        "#use": "useForHomePage"
+      randomPhoto2: {
+        url:
+          "https://s3.us-east-2.amazonaws.com/zhmodikov.com/static/photo/5/angelica.jpg"
       }
-    };
-
-    let items = await docClient.scan(params).promise();
-    return items.Items[Math.floor(Math.random() * items.Items.length)];
+    });
   }
 
   async componentDidMount() {
-    this.setState({
-      ...this.state,
-      randomPhoto1: await this.getRandomPhotoFromSection(5),
-      randomPhoto2: await this.getRandomPhotoFromSection(5)
-    });
+    await this.getRandomPhotoFromEachSection();
   }
 
   render() {
