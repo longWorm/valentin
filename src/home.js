@@ -2,8 +2,8 @@ import "./home.css";
 import React from "react";
 import Box from "@material-ui/core/Box";
 
-// https://0wdqxf9sbk.execute-api.us-east-1.amazonaws.com/getPhotos/getPhotosFromSection?section=3
-// https://0wdqxf9sbk.execute-api.us-east-1.amazonaws.com/getHomePagePhotos/getHomePagePhotos
+// https://pzq6wsozcc.execute-api.ap-southeast-2.amazonaws.com/getHomePagePhotos/getPhotosFromSection?section=1
+// https://pzq6wsozcc.execute-api.ap-southeast-2.amazonaws.com/getHomePagePhotos/getHomePagePhotos
 
 class Home extends React.Component {
   constructor(props) {
@@ -13,7 +13,7 @@ class Home extends React.Component {
 
   async getHomePagePhotos() {
     fetch(
-      "https://0wdqxf9sbk.execute-api.us-east-1.amazonaws.com/getHomePagePhotos/getHomePagePhotos"
+      "https://pzq6wsozcc.execute-api.ap-southeast-2.amazonaws.com/getHomePagePhotos/getHomePagePhotos"
     )
       .then(res => res.json())
       .then(data =>

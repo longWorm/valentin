@@ -20,7 +20,7 @@ class PortfolioMain extends React.Component {
 
   async getRandomPhotoFromEachSection() {
     fetch(
-      "https://0wdqxf9sbk.execute-api.us-east-1.amazonaws.com/getHomePagePhotos/getHomePagePhotos"
+      "https://pzq6wsozcc.execute-api.ap-southeast-2.amazonaws.com/getHomePagePhotos/getHomePagePhotos"
     )
       .then(res => res.json())
       .then(data =>

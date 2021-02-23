@@ -17,7 +17,7 @@ class Portfolio extends React.Component {
 
   async getPhotosFromSection(section) {
     return fetch(
-      "https://0wdqxf9sbk.execute-api.us-east-1.amazonaws.com/getPhotos/getPhotosFromSection?section=" +
+      "https://pzq6wsozcc.execute-api.ap-southeast-2.amazonaws.com/getHomePagePhotos/getPhotosFromSection?section=" +
         section
     )
       .then(res => res.json())
@@ -35,17 +35,17 @@ class Portfolio extends React.Component {
 
   OnNextPhoto() {
     var photos = this.getPhotos();
-    var index = photos.indexOf(this.state.selectedImage);
-    if (index < photos.length - 1)
-      this.setState({ selectedImage: photos[index + 1] });
-    else this.setState({ selectedImage: photos[0] });
+    var index = photos.Items.indexOf(this.state.selectedImage);
+    if (index < photos.Items.length - 1)
+      this.setState({ selectedImage: photos.Items[index + 1] });
+    else this.setState({ selectedImage: photos.Items[0] });
   }
 
   OnPreviousPhoto() {
     var photos = this.getPhotos();
-    var index = photos.indexOf(this.state.selectedImage);
-    if (index > 0) this.setState({ selectedImage: photos[index - 1] });
-    else this.setState({ selectedImage: photos[photos.length - 1] });
+    var index = photos.Items.indexOf(this.state.selectedImage);
+    if (index > 0) this.setState({ selectedImage: photos.Items[index - 1] });
+    else this.setState({ selectedImage: photos.Items[photos.Items.length - 1] });
   }
 
   getPhotos() {
