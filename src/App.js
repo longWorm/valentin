@@ -6,6 +6,7 @@ import Portfolio from "./portfolio";
 import PortfolioMain from "./portfolioMain";
 import ProjectsMain from "./projectsMain";
 import About from "./About";
+import Testimonials from "./Testimonials";
 import Contacts from "./Contacts";
 
 import "./App.css";
@@ -88,6 +89,9 @@ class App extends React.Component {
                 </Route>
                 <Route path="/About">
                   <About pc={pc} />
+                </Route>
+                <Route path="/Testimonials">
+                  <Testimonials/>
                 </Route>
               </Switch>
             </div>

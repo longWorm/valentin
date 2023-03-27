@@ -84,9 +84,14 @@ class Sidebar extends React.Component {
                     {t("sidebar.About")}
                   </Link>
                 </ListItem>
-                <ListItem key="Contacts" button>
+                {/* <ListItem key="Contacts" button>
                   <Link to="/Contacts" className="listItem">
                     {t("sidebar.Contacts")}
+                  </Link>
+                </ListItem> */}
+                <ListItem key="Testimonials" button>
+                  <Link to="/Testimonials" className="listItem">
+                    {t("sidebar.Testimonials")}
                   </Link>
                 </ListItem>
               </List>
